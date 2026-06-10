@@ -1,12 +1,15 @@
 "use client";
 
+import { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
 import Reveal from "./Reveal";
-import { useLeadModal } from "./LeadModal";
 
 const offerings = [
   {
     name: "Digital Business Launch Package",
     tag: "Launch",
+    calNamespace: "dbs-launch",
+    calLink: "godigitalstudio/dbs-launch",
     description:
       "We build and launch your complete digital business in 6–12 weeks — strategy, apps, payments, and operations, ready to run.",
     points: [
@@ -20,6 +23,8 @@ const offerings = [
   {
     name: "Digital Business Management Retainer",
     tag: "Run & Grow",
+    calNamespace: "dbs-runandgrow",
+    calLink: "godigitalstudio/dbs-runandgrow",
     description:
       "We run and continuously improve your digital business every month — so it keeps getting better while you stay focused on your audience.",
     points: [
@@ -33,6 +38,8 @@ const offerings = [
   {
     name: "Custom / Modular Engagements",
     tag: "À la carte",
+    calNamespace: "dbs-custom",
+    calLink: "godigitalstudio/dbs-custom",
     description:
       "Strategy, apps, systems, or AI features — pick exactly what you need, à la carte or combined into a custom scope.",
     points: [
@@ -46,7 +53,20 @@ const offerings = [
 ];
 
 export default function Services() {
-  const { open } = useLeadModal();
+  useEffect(() => {
+    offerings.forEach(async ({ calNamespace }) => {
+      const cal = await getCalApi({ namespace: calNamespace });
+      cal("ui", {
+        theme: "light",
+        cssVarsPerTheme: {
+          light: { "cal-brand": "#0a1628" },
+          dark: { "cal-brand": "#e8a33d" },
+        },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    });
+  }, []);
 
   return (
     <section id="services" className="bg-paper-deep">
@@ -122,7 +142,9 @@ export default function Services() {
                     Custom quote, scoped on your strategy call
                   </p>
                   <button
-                    onClick={open}
+                    data-cal-namespace={o.calNamespace}
+                    data-cal-link={o.calLink}
+                    data-cal-config='{"layout":"month_view"}'
                     className={`mt-4 w-full rounded-full px-6 py-3 text-sm font-semibold transition-colors ${
                       o.featured
                         ? "bg-gold-bright text-ink hover:bg-gold"

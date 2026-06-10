@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "framer-motion": "^12.16.0",
     "next": "^15.3.3",
     "react": "^19.1.0",

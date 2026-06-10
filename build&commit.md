@@ -28,4 +28,18 @@ her is the link for the repo, you will intialize this repo and then append each 
 
 **Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 151 kB.
 
-**Commit:** Initial build — full Digital Business Studio landing page (pushed to `main`). 
+**Commit:** `5e97e98` Initial build — full Digital Business Studio landing page (pushed to `main`).
+
+### Build 2 — Cal.com booking embeds + Proof project updates (2026-06-10)
+
+**What was built:**
+- Added Cal.com popup embeds via the official `@calcom/embed-react` package. Each service card's "Book a call" button now opens its own booking flow in an on-page popup (light theme, navy brand color, month view):
+  - Launch Package → `cal.com/godigitalstudio/dbs-launch`
+  - Management Retainer (Run & Grow) → `cal.com/godigitalstudio/dbs-runandgrow`
+  - Custom / Modular (À la carte) → `cal.com/godigitalstudio/dbs-custom`
+- General CTAs (nav, hero, final CTA) still open the lead-capture modal.
+- Proof section updated with current projects: **402bazaar.com** (production marketplace) and **pookiepartner** (dating/chat app, under development).
+
+**Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 152 kB.
+
+**Commit:** Cal.com embeds on service cards + Proof project refresh (pushed to `main`). 

@@ -4,17 +4,17 @@ import Reveal from "./Reveal";
 
 const projects = [
   {
-    name: "Go Get Going",
+    name: "402bazaar.com",
     status: "Built and running in production",
     description:
-      "A comprehensive life & business tracking platform with voice input, flexible data models, and accountability systems.",
+      "A complete end to end marketplace for buying and selling everything on the internet for humans and AI agents, built on Next.js, Prisma, and Postgres. Built, Launched and Managed by digitalbusiness.studio",
   },
   {
-    name: "Live SOP",
-    status: "Built and running in production",
+    name: "pookiepartner",
+    status: "Under Development",
     description:
-      "An operations platform that turns standard operating procedures into living, trackable workflows — so processes get followed, not forgotten.",
-  },
+      "A traditional yet modern dating and chat application built with a focus on user experience and community building.",
+  }
 ];
 
 export default function Proof() {
