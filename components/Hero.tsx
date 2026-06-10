@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLeadModal } from "./LeadModal";
+import { CAL_STRATEGY } from "./CalInit";
 
 const disciplines = [
   "Strategy",
@@ -16,8 +16,6 @@ const disciplines = [
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
-  const { open } = useLeadModal();
-
   return (
     <section id="top" className="relative overflow-hidden pt-[4.5rem]">
       {/* Faint oversized ring, anchoring the editorial composition */}
@@ -80,7 +78,9 @@ export default function Hero() {
           className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center"
         >
           <button
-            onClick={open}
+            data-cal-namespace={CAL_STRATEGY.namespace}
+            data-cal-link={CAL_STRATEGY.link}
+            data-cal-config='{"layout":"month_view"}'
             className="rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-paper transition-all hover:bg-ink-soft hover:shadow-lg hover:shadow-ink/10"
           >
             Book a Free Strategy Call

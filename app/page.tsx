@@ -1,4 +1,4 @@
-import { LeadModalProvider } from "@/components/LeadModal";
+import CalInit from "@/components/CalInit";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
@@ -13,7 +13,8 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <LeadModalProvider>
+    <>
+      <CalInit />
       <Nav />
       <main>
         <Hero />
@@ -27,6 +28,6 @@ export default function Home() {
         <FinalCta />
       </main>
       <Footer />
-    </LeadModalProvider>
+    </>
   );
 }

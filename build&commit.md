@@ -42,4 +42,15 @@ her is the link for the repo, you will intialize this repo and then append each 
 
 **Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 152 kB.
 
-**Commit:** Cal.com embeds on service cards + Proof project refresh (pushed to `main`). 
+**Commit:** `a69ae15` Cal.com embeds on service cards + Proof project refresh (pushed to `main`).
+
+### Build 3 — Strategy-call CTAs wired to Cal.com, lead modal removed (2026-06-10)
+
+**What was built:**
+- All general "Book a Strategy Call" CTAs (nav desktop + mobile menu, hero, final CTA section) now open the `cal.com/godigitalstudio/dbs-strategy` booking popup.
+- Removed the non-functional lead-capture modal — it stored/sent nothing; Cal.com now collects name + email through real bookings. (Recoverable from git history if a waitlist form is wanted later.)
+- New `components/CalInit.tsx` initializes all four Cal.com namespaces (`dbs-strategy`, `dbs-launch`, `dbs-runandgrow`, `dbs-custom`) in one place; Services.tsx no longer self-initializes.
+
+**Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 151 kB.
+
+**Commit:** Wire strategy-call CTAs to Cal.com; remove dead lead modal (pushed to `main`). 

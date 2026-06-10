@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLeadModal } from "./LeadModal";
+import { CAL_STRATEGY } from "./CalInit";
 
 const links = [
   { label: "How it Works", href: "#how-it-works" },
@@ -12,7 +12,6 @@ const links = [
 ];
 
 export default function Nav() {
-  const { open } = useLeadModal();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -55,7 +54,9 @@ export default function Nav() {
 
         <div className="flex items-center gap-3">
           <button
-            onClick={open}
+            data-cal-namespace={CAL_STRATEGY.namespace}
+            data-cal-link={CAL_STRATEGY.link}
+            data-cal-config='{"layout":"month_view"}'
             className="hidden rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-ink-soft sm:block"
           >
             Book a Strategy Call
@@ -108,10 +109,10 @@ export default function Nav() {
                 </a>
               ))}
               <button
-                onClick={() => {
-                  setMenuOpen(false);
-                  open();
-                }}
+                data-cal-namespace={CAL_STRATEGY.namespace}
+                data-cal-link={CAL_STRATEGY.link}
+                data-cal-config='{"layout":"month_view"}'
+                onClick={() => setMenuOpen(false)}
                 className="mt-3 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-paper"
               >
                 Book a Strategy Call

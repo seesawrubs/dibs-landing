@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
-import { getCalApi } from "@calcom/embed-react";
 import Reveal from "./Reveal";
 
 const offerings = [
@@ -53,21 +51,6 @@ const offerings = [
 ];
 
 export default function Services() {
-  useEffect(() => {
-    offerings.forEach(async ({ calNamespace }) => {
-      const cal = await getCalApi({ namespace: calNamespace });
-      cal("ui", {
-        theme: "light",
-        cssVarsPerTheme: {
-          light: { "cal-brand": "#0a1628" },
-          dark: { "cal-brand": "#e8a33d" },
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view",
-      });
-    });
-  }, []);
-
   return (
     <section id="services" className="bg-paper-deep">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">

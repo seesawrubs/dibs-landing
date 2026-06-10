@@ -1,11 +1,9 @@
 "use client";
 
 import Reveal from "./Reveal";
-import { useLeadModal } from "./LeadModal";
+import { CAL_STRATEGY } from "./CalInit";
 
 export default function FinalCta() {
-  const { open } = useLeadModal();
-
   return (
     <section className="relative overflow-hidden bg-ink text-paper">
       <div
@@ -33,7 +31,9 @@ export default function FinalCta() {
         </Reveal>
         <Reveal delay={0.25}>
           <button
-            onClick={open}
+            data-cal-namespace={CAL_STRATEGY.namespace}
+            data-cal-link={CAL_STRATEGY.link}
+            data-cal-config='{"layout":"month_view"}'
             className="mt-12 rounded-full bg-gold-bright px-10 py-4 text-base font-bold text-ink transition-all hover:bg-gold hover:shadow-xl hover:shadow-gold-bright/20"
           >
             Book Your Strategy Call
