@@ -53,4 +53,13 @@ her is the link for the repo, you will intialize this repo and then append each 
 
 **Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 151 kB.
 
-**Commit:** Wire strategy-call CTAs to Cal.com; remove dead lead modal (pushed to `main`). 
+**Commit:** `2b0840d` Wire strategy-call CTAs to Cal.com; remove dead lead modal (pushed to `main`).
+
+### Build 4 — Proof section cleanup (2026-06-10)
+
+**What was built:**
+- Removed the "Client work coming soon" banner from the Proof section — the section now showcases two client projects (402bazaar.com, pookiepartner), so the placeholder no longer applies.
+
+**Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 151 kB.
+
+**Commit:** Remove "client work coming soon" banner from Proof (pushed to `main`). 

@@ -59,18 +59,6 @@ export default function Proof() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.2}>
-          <div className="mt-10 rounded-2xl border border-gold-bright/30 bg-gold-bright/[0.06] p-8 sm:flex sm:items-center sm:justify-between sm:gap-8">
-            <p className="text-lg leading-relaxed text-paper/85">
-              <span className="font-semibold text-gold-bright">
-                Client work coming soon
-              </span>{" "}
-              — early partners get priority access and case study
-              opportunities.
-            </p>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
