@@ -5,74 +5,88 @@ import Reveal from "./Reveal";
 const pillars = [
   {
     n: "01",
-    title: "Strategy & Business Design",
-    body: "We map your offers, audience, and revenue model before a single line of code — so everything we build serves the business.",
+    title: "Strategy before software",
+    body: "We shape the offer, buyer journey, monetization model, and business logic before build decisions lock you in.",
   },
   {
     n: "02",
-    title: "Custom Mobile + Web Apps",
-    body: "Production-grade apps designed around your exact workflows — not templates bent out of shape.",
+    title: "Custom product, not a stretched template",
+    body: "Your app, website, or member experience is designed around your workflows, not around a generic stack pretending to fit.",
   },
   {
     n: "03",
-    title: "Operations, Processes & Tracking",
-    body: "Systems that make the business run itself: SOPs, dashboards, and accountability loops you can actually see.",
+    title: "Payments and operations wired in",
+    body: "Revenue, internal dashboards, handoffs, reporting, and accountability loops are built into the system from the start.",
   },
   {
     n: "04",
-    title: "Monetization & Payments",
-    body: "Razorpay, global gateways, subscriptions, one-time offers — money flows in cleanly from day one.",
+    title: "Automation that actually removes work",
+    body: "We use AI and automation to remove repetitive operational load, not to add another layer of complexity to manage.",
   },
   {
     n: "05",
-    title: "AI Automation & Ongoing Management",
-    body: "AI-powered workflows that remove busywork, plus a partner who keeps improving the machine every month.",
+    title: "A business that keeps improving",
+    body: "Launch is not the finish line. We can stay on to operate, iterate, and sharpen the system month after month.",
   },
 ];
 
 export default function Solution() {
   return (
-    <section id="how-it-works" className="bg-paper">
+    <section id="how-it-works" className="bg-transparent">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-        <Reveal>
-          <p className="section-label text-gold">02 — The Solution</p>
-          <h2 className="mt-7 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-            One studio.{" "}
-            <span className="serif-accent font-normal text-gold">
-              Complete
-            </span>{" "}
-            digital business.
-          </h2>
-        </Reveal>
-
-        <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-          {pillars.map((p, i) => (
-            <Reveal
-              key={p.n}
-              delay={i * 0.08}
-              className={`group bg-paper p-8 transition-colors hover:bg-paper-deep sm:p-10 ${
-                i === 4 ? "sm:col-span-2 lg:col-span-1" : ""
-              }`}
-            >
-              <p className="serif-accent text-2xl text-gold">{p.n}</p>
-              <h3 className="mt-5 text-xl font-bold tracking-tight text-ink">
-                {p.title}
-              </h3>
-              <p className="mt-3 leading-relaxed text-ink-mute">{p.body}</p>
+        <div className="grid gap-12 lg:grid-cols-[0.76fr_1.24fr]">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <Reveal>
+              <p className="section-label text-gold">02 The model</p>
+              <h2 className="mt-6 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
+                We do not just build deliverables. We design a{" "}
+                <span className="serif-accent font-normal text-gold">
+                  complete operating layer
+                </span>
+                .
+              </h2>
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-mute">
+                That means the business logic, product, payments, back office,
+                and automation decisions are made together instead of in random
+                sequence.
+              </p>
             </Reveal>
-          ))}
-          <Reveal
-            delay={0.4}
-            className="flex flex-col justify-between bg-ink p-8 sm:p-10"
-          >
-            <p className="serif-accent text-2xl italic text-gold-bright">
-              Everything, integrated.
-            </p>
-            <p className="mt-3 leading-relaxed text-paper/70">
-              Each pillar is built to work with the others — one coherent
-              system instead of five disconnected vendors.
-            </p>
-          </Reveal>
+
+            <Reveal delay={0.12}>
+              <div className="mt-8 rounded-[1.75rem] border border-line bg-paper/74 p-6">
+                <p className="section-label text-gold">What that changes</p>
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-ink-soft">
+                  <li>Fewer rebuilds caused by early wrong decisions.</li>
+                  <li>Cleaner ownership across launch and post-launch work.</li>
+                  <li>A stack that supports growth instead of resisting it.</li>
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="space-y-4">
+            {pillars.map((pillar, index) => (
+              <Reveal
+                key={pillar.n}
+                delay={index * 0.08}
+                className={index % 2 === 0 ? "lg:pr-10" : "lg:pl-10"}
+              >
+                <article className="rounded-[1.9rem] border border-line bg-paper/78 p-6 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-8">
+                  <div className="grid gap-4 sm:grid-cols-[5rem_1fr] sm:items-start">
+                    <p className="serif-accent text-4xl text-gold">{pillar.n}</p>
+                    <div>
+                      <h3 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+                        {pillar.title}
+                      </h3>
+                      <p className="mt-3 max-w-2xl leading-relaxed text-ink-mute">
+                        {pillar.body}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

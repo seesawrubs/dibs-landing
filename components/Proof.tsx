@@ -7,57 +7,91 @@ const projects = [
     name: "402bazaar.com",
     status: "Built and running in production",
     description:
-      "A complete end to end marketplace for buying and selling everything on the internet for humans and AI agents, built on Next.js, Prisma, and Postgres. Built, Launched and Managed by digitalbusiness.studio",
+      "An end-to-end marketplace for buying and selling online for both humans and AI agents, built, launched, and managed by Digital Business Studio.",
+    stack: ["Next.js", "Prisma", "Postgres", "Marketplace flows"],
+    featured: true,
   },
   {
     name: "pookiepartner",
-    status: "Under Development",
+    status: "Under development",
     description:
-      "A traditional yet modern dating and chat application built with a focus on user experience and community building.",
-  }
+      "A dating and chat application designed around a traditional but modern product experience with strong community considerations.",
+    stack: ["Product UX", "Mobile-first", "Community systems"],
+    featured: false,
+  },
 ];
 
 export default function Proof() {
+  const featured = projects.find((project) => project.featured)!;
+  const secondary = projects.find((project) => !project.featured)!;
+
   return (
-    <section id="proof" className="bg-ink text-paper">
+    <section id="proof" className="bg-transparent">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
         <Reveal>
-          <p className="section-label text-gold-bright">04 — Proof</p>
-          <h2 className="mt-7 max-w-3xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
-            Real systems.{" "}
-            <span className="serif-accent font-normal text-gold-bright">
-              Real results.
+          <p className="section-label text-gold">04 Selected work</p>
+          <h2 className="mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
+            Not theory.{" "}
+            <span className="serif-accent font-normal text-gold">
+              Built systems
             </span>
+            .
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-paper/70">
-            We don&rsquo;t just advise — we ship. These are production-grade
-            apps and systems we&rsquo;ve built and operated ourselves, end to
-            end.
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-mute">
+            We want the page to feel operational because that is how we work.
+            These are examples of products and systems we have actually shipped.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {projects.map((project, i) => (
-            <Reveal key={project.name} delay={i * 0.12}>
-              <article className="group h-full rounded-2xl border border-line-dark p-8 transition-colors hover:border-gold-bright/40 sm:p-10">
-                <div className="flex items-center gap-2.5">
-                  <span
-                    className="h-2 w-2 rounded-full bg-emerald-400"
-                    aria-hidden="true"
-                  />
-                  <p className="text-xs font-medium uppercase tracking-[0.18em] text-paper/50">
-                    {project.status}
-                  </p>
-                </div>
-                <h3 className="mt-6 text-2xl font-bold tracking-tight">
-                  {project.name}
-                </h3>
-                <p className="mt-4 leading-relaxed text-paper/70">
-                  {project.description}
+        <div className="mt-14 grid gap-6 lg:grid-cols-12">
+          <Reveal delay={0.08} className="lg:col-span-7">
+            <article className="panel-dark h-full rounded-[2rem] p-7 text-ink sm:p-9">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_12px_rgba(0,232,123,0.8)]" />
+                <p className="section-label text-clay">
+                  {featured.status}
                 </p>
-              </article>
-            </Reveal>
-          ))}
+              </div>
+              <h3 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+                {featured.name}
+              </h3>
+              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/74">
+                {featured.description}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {featured.stack.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-line-dark px-3.5 py-2 text-sm text-ink/78"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          </Reveal>
+
+          <Reveal delay={0.16} className="lg:col-span-5">
+            <article className="h-full rounded-[2rem] border border-line bg-paper p-7 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-8">
+              <p className="section-label text-gold">{secondary.status}</p>
+              <h3 className="mt-5 text-3xl font-bold tracking-tight text-ink">
+                {secondary.name}
+              </h3>
+              <p className="mt-5 leading-relaxed text-ink-mute">
+                {secondary.description}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {secondary.stack.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-line bg-paper-deep px-3.5 py-2 text-sm text-ink-soft"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          </Reveal>
         </div>
       </div>
     </section>

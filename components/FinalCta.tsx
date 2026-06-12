@@ -5,40 +5,46 @@ import { CAL_STRATEGY } from "./CalInit";
 
 export default function FinalCta() {
   return (
-    <section className="relative overflow-hidden bg-ink text-paper">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-48 -left-48 h-[36rem] w-[36rem] rounded-full border border-line-dark"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-24 -left-24 h-[22rem] w-[22rem] rounded-full border border-line-dark"
-      />
-      <div className="relative mx-auto max-w-4xl px-5 py-28 text-center sm:px-8 sm:py-36">
-        <Reveal>
-          <h2 className="text-3xl font-black leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            Ready to stop juggling tools and start running a{" "}
-            <span className="serif-accent font-normal text-gold-bright">
-              real digital business?
-            </span>
-          </h2>
-        </Reveal>
-        <Reveal delay={0.15}>
-          <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-paper/70">
-            Book a free 30-minute strategy call. We&rsquo;ll assess your
-            current setup and show you exactly how we can help.
-          </p>
-        </Reveal>
-        <Reveal delay={0.25}>
-          <button
-            data-cal-namespace={CAL_STRATEGY.namespace}
-            data-cal-link={CAL_STRATEGY.link}
-            data-cal-config='{"layout":"month_view"}'
-            className="mt-12 rounded-full bg-gold-bright px-10 py-4 text-base font-bold text-ink transition-all hover:bg-gold hover:shadow-xl hover:shadow-gold-bright/20"
-          >
-            Book Your Strategy Call
-          </button>
-        </Reveal>
+    <section className="bg-transparent px-5 py-20 text-ink sm:px-8 sm:py-24">
+      <div className="mx-auto max-w-6xl">
+        <div className="panel-paper relative overflow-hidden rounded-[2rem] px-6 py-10 text-ink sm:px-8 sm:py-12 lg:px-10">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full border border-line"
+          />
+          <Reveal>
+            <p className="section-label text-clay">Start with clarity</p>
+            <div className="mt-6 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div>
+                <h2 className="text-3xl font-black leading-[1.08] tracking-tight sm:text-5xl">
+                  If the business feels scattered, the first step is to see the
+                  system clearly.
+                </h2>
+                <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-mute">
+                  Book the strategy call. We will look at your offer, current
+                  stack, operational drag, and what should actually happen next.
+                </p>
+              </div>
+
+              <div className="rounded-[1.75rem] border border-line bg-paper-deep p-6">
+                <p className="section-label text-clay">On the call</p>
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-ink-soft">
+                  <li>A direct view of where the current system is leaking.</li>
+                  <li>What should be fixed now versus later.</li>
+                  <li>Whether a full build, modular scope, or retainer fits best.</li>
+                </ul>
+                <button
+                  data-cal-namespace={CAL_STRATEGY.namespace}
+                  data-cal-link={CAL_STRATEGY.link}
+                  data-cal-config='{"layout":"month_view"}'
+                  className="mt-6 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-paper shadow-[0_0_32px_rgba(0,232,123,0.35)] transition-colors hover:bg-gold-bright"
+                >
+                  Book Your Strategy Call
+                </button>
+              </div>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

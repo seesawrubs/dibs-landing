@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Digital Business Studio — We build and run your complete digital business",
+  title: "Digital Business Studio | We build and run digital businesses",
   description:
-    "From strategy and custom apps to operations, payments, AI systems, and ongoing growth — one partner handles everything so you can focus on your audience and offers. Built for creators, coaches & digital founders in India and worldwide.",
+    "From strategy and custom apps to operations, payments, AI systems, and ongoing growth, one partner handles the whole digital business so you can focus on the audience and the offer.",
   keywords: [
     "digital business studio",
     "app development",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Digital Business Studio",
     description:
-      "We build and run your complete digital business — strategy, apps, payments, operations, AI systems, and ongoing growth.",
+      "We build and run your complete digital business: strategy, apps, payments, operations, AI systems, and ongoing growth.",
     type: "website",
   },
 };
@@ -31,7 +31,11 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
           rel="stylesheet"

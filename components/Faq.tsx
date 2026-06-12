@@ -7,27 +7,27 @@ import Reveal from "./Reveal";
 const faqs = [
   {
     q: "How long does a typical project take?",
-    a: "A complete Digital Business Launch typically takes 6–12 weeks depending on scope. Modular engagements — a single app, a payments integration, an AI automation — can be much faster. You'll get a clear timeline in your proposal before anything starts.",
+    a: "A full launch engagement usually takes 6 to 12 weeks depending on scope. Smaller modular work can move faster. You get a concrete recommendation and timeline before anything begins.",
   },
   {
-    q: "Do you only work with big budgets?",
-    a: "No. We work with creators and founders at different stages, which is exactly why we offer modular engagements alongside the full launch package. On your strategy call we'll be upfront about what's realistic for your budget — and what to prioritize first.",
+    q: "Do you only work with large budgets?",
+    a: "No. We work with businesses at different stages. That is why modular engagements exist. The important part is being honest about what should be done now and what should wait.",
   },
   {
-    q: "Can you integrate with tools I already use?",
-    a: "Yes. We build around your existing stack wherever it makes sense — payment gateways, email tools, communities, CRMs, spreadsheets. We replace tools only when they're genuinely holding you back, not for the sake of it.",
+    q: "Can you work with the tools I already use?",
+    a: "Yes. We build around the existing stack where it makes sense. We replace tools only when they are clearly creating friction or limiting the business.",
   },
   {
-    q: "What if I want to manage parts myself?",
-    a: "Perfect — we build for handover. Every launch includes training and documentation so you can run what you want yourself, and the management retainer is always optional. You choose how much we stay involved.",
+    q: "What if I want to manage some parts myself?",
+    a: "That is fine. We build for handover. Documentation, training, and clear ownership are part of the process so you can keep what you want in house.",
   },
   {
-    q: "Do you work with clients outside India?",
-    a: "Absolutely. We're based in India and work with creators and founders worldwide. We support both Razorpay for Indian payments and global gateways for international audiences.",
+    q: "Do you work outside India?",
+    a: "Yes. We are based in India and work with founders and operators worldwide. We support both Indian and international payment setups where needed.",
   },
   {
-    q: "What makes you different from a regular app development agency?",
-    a: "An agency ships you an app and disappears. We design the business around the app — strategy, operations, payments, AI automation — and can keep running it with you. You get one accountable partner for the whole digital business, not just the code.",
+    q: "How are you different from a normal dev agency?",
+    a: "A typical agency delivers code. We design the business layer around the product as well: strategy, operations, payments, automation, and ongoing iteration when needed.",
   },
 ];
 
@@ -35,15 +35,13 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   const [openItem, setOpenItem] = useState(false);
 
   return (
-    <div className="border-b border-line">
+    <div className="border-b border-line last:border-b-0">
       <button
-        onClick={() => setOpenItem((v) => !v)}
+        onClick={() => setOpenItem((value) => !value)}
         aria-expanded={openItem}
         className="flex w-full items-center justify-between gap-6 py-6 text-left"
       >
-        <span className="text-lg font-semibold tracking-tight text-ink">
-          {q}
-        </span>
+        <span className="text-lg font-semibold tracking-tight text-ink">{q}</span>
         <motion.span
           animate={{ rotate: openItem ? 45 : 0 }}
           transition={{ duration: 0.25 }}
@@ -79,24 +77,34 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 export default function Faq() {
   return (
-    <section id="faq" className="bg-paper">
-      <div className="mx-auto max-w-4xl px-5 py-24 sm:px-8 sm:py-32">
-        <Reveal>
-          <p className="section-label text-gold">07 — FAQ</p>
-          <h2 className="mt-7 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-            Questions,{" "}
-            <span className="serif-accent font-normal text-gold">
-              answered honestly
-            </span>
-          </h2>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div className="mt-12 border-t border-line">
-            {faqs.map((faq) => (
-              <FaqItem key={faq.q} q={faq.q} a={faq.a} />
-            ))}
+    <section id="faq" className="bg-transparent">
+      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+        <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+          <div>
+            <Reveal>
+              <p className="section-label text-gold">07 FAQ</p>
+              <h2 className="mt-6 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
+                Questions,{" "}
+                <span className="serif-accent font-normal text-gold">
+                  answered plainly
+                </span>
+                .
+              </h2>
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-mute">
+                The model is simple on purpose. If something matters to the
+                buying decision, it should be easy to understand.
+              </p>
+            </Reveal>
           </div>
-        </Reveal>
+
+          <Reveal delay={0.08}>
+            <div className="rounded-[2rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-8">
+              {faqs.map((faq) => (
+                <FaqItem key={faq.q} q={faq.q} a={faq.a} />
+              ))}
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

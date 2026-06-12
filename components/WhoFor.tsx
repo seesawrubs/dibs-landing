@@ -5,48 +5,58 @@ import Reveal from "./Reveal";
 const audiences = [
   {
     title: "Creators",
-    body: "Ready to productize their knowledge into courses, communities, and digital products.",
+    body: "People turning attention and expertise into products, communities, and digital ecosystems they actually own.",
   },
   {
     title: "Coaches",
-    body: "Wanting their own platform instead of relying on third-party tools they don't control.",
+    body: "Operators who are tired of duct-taping third-party tools together when the customer experience should feel cohesive.",
   },
   {
     title: "Founders",
-    body: "Building digital-first businesses and want the whole stack done right, from day one.",
-  },
-  {
-    title: "The tired-of-juggling",
-    body: "Done with fragmented tools and five vendors — they want one accountable partner.",
+    body: "Teams building digital-first businesses and wanting product, systems, and monetization handled with one point of accountability.",
   },
 ];
 
 export default function WhoFor() {
   return (
-    <section className="bg-paper-deep">
+    <section id="who-for" className="bg-paper-deep/80">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-        <Reveal>
-          <p className="section-label text-gold">06 — Who This Is For</p>
-          <h2 className="mt-7 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-            Made for people who&rsquo;d rather{" "}
-            <span className="serif-accent font-normal text-gold">build</span>{" "}
-            than babysit tools
-          </h2>
-        </Reveal>
+        <div className="grid gap-6 lg:grid-cols-12">
+          <Reveal className="lg:col-span-5">
+            <div className="panel-dark h-full rounded-[2rem] p-7 text-ink sm:p-8">
+              <p className="section-label text-clay">06 Who this fits</p>
+              <h2 className="mt-6 text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
+                For teams who would rather{" "}
+                <span className="serif-accent font-normal text-gold-bright">
+                  build the business
+                </span>{" "}
+                than babysit the stack.
+              </h2>
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-ink/72">
+                If the business is meant to feel premium, the internal systems
+                cannot feel improvised.
+              </p>
+            </div>
+          </Reveal>
 
-        <div className="mt-16 grid gap-x-12 gap-y-10 sm:grid-cols-2">
-          {audiences.map((a, i) => (
-            <Reveal key={a.title} delay={i * 0.08}>
-              <div className="border-t-2 border-ink pt-6">
-                <h3 className="text-xl font-bold tracking-tight text-ink">
-                  {a.title}
-                </h3>
-                <p className="mt-3 max-w-md leading-relaxed text-ink-mute">
-                  {a.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+          <div className="grid gap-6 lg:col-span-7 sm:grid-cols-2">
+            {audiences.map((audience, index) => (
+              <Reveal
+                key={audience.title}
+                delay={index * 0.08}
+                className={index === 2 ? "sm:col-span-2" : ""}
+              >
+                <article className="h-full rounded-[1.75rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-7">
+                  <h3 className="text-2xl font-bold tracking-tight text-ink">
+                    {audience.title}
+                  </h3>
+                  <p className="mt-4 max-w-xl leading-relaxed text-ink-mute">
+                    {audience.body}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

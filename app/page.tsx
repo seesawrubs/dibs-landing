@@ -16,7 +16,7 @@ export default function Home() {
     <>
       <CalInit />
       <Nav />
-      <main>
+      <main className="relative overflow-x-clip">
         <Hero />
         <Problem />
         <Solution />
