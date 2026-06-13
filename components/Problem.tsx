@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import Container from "./Container";
 import Reveal from "./Reveal";
 
 const swaps = [
@@ -89,7 +90,7 @@ export default function Problem() {
         aria-hidden="true"
         className="ambient-grid-dark pointer-events-none absolute inset-0 opacity-70"
       />
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+      <Container className="py-24 sm:py-32">
         <div className="grid gap-12 lg:grid-cols-[1fr_22rem] lg:items-start">
           <div>
             <Reveal>
@@ -115,7 +116,7 @@ export default function Problem() {
           </div>
 
           <Reveal delay={0.18}>
-            <div className="rounded-[1.75rem] border border-line-dark bg-ink/6 p-6">
+            <div className="rounded-[1.75rem] border border-line-dark bg-ink/6 p-6 2xl:p-8">
               <p className="section-label text-clay">What it feels like</p>
               <p className="mt-4 text-2xl font-semibold leading-snug tracking-tight">
                 You are the project manager for your own business instead of the
@@ -158,10 +159,10 @@ export default function Problem() {
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+        <div className="mt-14 grid gap-5 lg:grid-cols-3 2xl:gap-6">
           {painCards.map((card, index) => (
             <Reveal key={card.title} delay={0.24 + index * 0.08}>
-              <article className="rounded-[1.5rem] border border-line-dark bg-ink/6 p-6">
+              <article className="rounded-[1.5rem] border border-line-dark bg-ink/6 p-6 2xl:p-7">
                 <p className="text-lg font-semibold tracking-tight text-ink">
                   {card.title}
                 </p>
@@ -170,7 +171,7 @@ export default function Problem() {
             </Reveal>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

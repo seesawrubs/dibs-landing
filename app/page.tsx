@@ -1,14 +1,11 @@
 import CalInit from "@/components/CalInit";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Problem from "@/components/Problem";
-import Solution from "@/components/Solution";
-import Services from "@/components/Services";
-import Proof from "@/components/Proof";
-import Process from "@/components/Process";
-import WhoFor from "@/components/WhoFor";
-import Faq from "@/components/Faq";
-import FinalCta from "@/components/FinalCta";
+import SelectedWork from "@/components/Proof"; // evolving into portfolio treatment
+import TheStudio from "@/components/TheStudio"; // new calm editorial philosophy section
+import HowWeWork from "@/components/HowWeWork"; // narrative "how we work together"
+import Partners from "@/components/WhoFor"; // refined audience fit
+import Invitation from "@/components/Invitation";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -17,15 +14,13 @@ export default function Home() {
       <CalInit />
       <Nav />
       <main className="relative overflow-x-clip">
+        {/* Current flow: Hero → The Studio (philosophy) → Approach → Work (with cards) → Partners → Invitation (card) */}
         <Hero />
-        <Problem />
-        <Solution />
-        <Services />
-        <Proof />
-        <Process />
-        <WhoFor />
-        <Faq />
-        <FinalCta />
+        <TheStudio />
+        <HowWeWork />
+        <SelectedWork />
+        <Partners />
+        <Invitation />
       </main>
       <Footer />
     </>

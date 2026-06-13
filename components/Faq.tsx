@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Container from "./Container";
 import Reveal from "./Reveal";
 
 const faqs = [
@@ -78,8 +79,8 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 export default function Faq() {
   return (
     <section id="faq" className="bg-transparent">
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-        <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+      <Container className="py-24 sm:py-32">
+        <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] 2xl:gap-16">
           <div>
             <Reveal>
               <p className="section-label text-gold">07 FAQ</p>
@@ -105,7 +106,7 @@ export default function Faq() {
             </div>
           </Reveal>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

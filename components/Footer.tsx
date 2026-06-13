@@ -1,3 +1,5 @@
+import Container from "./Container";
+
 const footerLinks = [
   { label: "How it Works", href: "#how-it-works" },
   { label: "Services", href: "#services" },
@@ -9,7 +11,7 @@ const footerLinks = [
 export default function Footer() {
   return (
     <footer className="border-t border-line bg-paper-deep text-ink">
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
+      <Container className="py-12">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div className="flex items-center gap-3">
             <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gold text-[0.72rem] font-black tracking-[0.18em] text-paper shadow-[0_0_24px_rgba(0,232,123,0.35)]">
@@ -45,7 +47,7 @@ export default function Footer() {
             <span className="serif-accent text-gold-bright">India</span>
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

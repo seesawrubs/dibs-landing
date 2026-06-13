@@ -1,5 +1,6 @@
 "use client";
 
+import Container from "./Container";
 import Reveal from "./Reveal";
 
 const projects = [
@@ -26,26 +27,21 @@ export default function Proof() {
   const secondary = projects.find((project) => !project.featured)!;
 
   return (
-    <section id="proof" className="bg-transparent">
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <section id="selected-work" className="bg-transparent">
+      <Container className="py-24 sm:py-32">
         <Reveal>
-          <p className="section-label text-gold">04 Selected work</p>
-          <h2 className="mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-            Not theory.{" "}
-            <span className="serif-accent font-normal text-gold">
-              Built systems
-            </span>
-            .
+          <p className="section-label text-gold">Work</p>
+          <h2 className="mt-6 max-w-3xl text-3xl font-semibold tracking-[-0.01em] leading-none text-ink sm:text-5xl">
+            Systems we’ve shaped and continue to run.
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-mute">
-            We want the page to feel operational because that is how we work.
-            These are examples of products and systems we have actually shipped.
+          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-mute">
+            Real products and platforms we’ve built, launched, and operated as one studio.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-12">
+        <div className="mt-14 grid gap-6 lg:grid-cols-12 2xl:gap-8">
           <Reveal delay={0.08} className="lg:col-span-7">
-            <article className="panel-dark h-full rounded-[2rem] p-7 text-ink sm:p-9">
+            <article className="panel-dark h-full rounded-[2rem] p-7 text-ink sm:p-9 2xl:p-10">
               <div className="flex flex-wrap items-center gap-3">
                 <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_12px_rgba(0,232,123,0.8)]" />
                 <p className="section-label text-clay">
@@ -72,7 +68,7 @@ export default function Proof() {
           </Reveal>
 
           <Reveal delay={0.16} className="lg:col-span-5">
-            <article className="h-full rounded-[2rem] border border-line bg-paper p-7 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-8">
+            <article className="h-full rounded-[2rem] border border-line bg-paper p-7 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-8 2xl:p-9">
               <p className="section-label text-gold">{secondary.status}</p>
               <h3 className="mt-5 text-3xl font-bold tracking-tight text-ink">
                 {secondary.name}
@@ -93,7 +89,7 @@ export default function Proof() {
             </article>
           </Reveal>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Container from "./Container";
 import Reveal from "./Reveal";
 
 const steps = [
@@ -37,8 +38,8 @@ export default function Process() {
         aria-hidden="true"
         className="ambient-grid-dark pointer-events-none absolute inset-0 opacity-70"
       />
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
-        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
+      <Container className="py-24 sm:py-32">
+        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] 2xl:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
             <Reveal>
               <p className="section-label text-clay">05 Process</p>
@@ -56,11 +57,11 @@ export default function Process() {
             </Reveal>
           </div>
 
-          <div className="relative space-y-5 before:absolute before:left-[1.35rem] before:top-0 before:h-full before:w-px before:bg-line-dark sm:before:left-[1.7rem]">
+          <div className="relative space-y-5 before:absolute before:left-[1.35rem] before:top-0 before:h-full before:w-px before:bg-line-dark sm:before:left-[1.7rem] 2xl:before:left-[2.1rem]">
             {steps.map((step, index) => (
               <Reveal key={step.n} delay={index * 0.06}>
-                <article className="relative rounded-[1.75rem] border border-line-dark bg-ink/6 p-5 pl-16 sm:p-7 sm:pl-20">
-                  <span className="absolute left-4 top-5 grid h-7 w-7 place-items-center rounded-full bg-gold text-xs font-bold text-paper shadow-[0_0_20px_rgba(0,232,123,0.4)] sm:left-6 sm:top-6 sm:h-8 sm:w-8">
+                <article className="relative rounded-[1.75rem] border border-line-dark bg-ink/6 p-5 pl-16 sm:p-7 sm:pl-20 2xl:p-8 2xl:pl-24">
+                  <span className="absolute left-4 top-5 grid h-7 w-7 place-items-center rounded-full bg-gold text-xs font-bold text-paper shadow-[0_0_20px_rgba(0,232,123,0.4)] sm:left-6 sm:top-6 sm:h-8 sm:w-8 2xl:left-8 2xl:top-7 2xl:h-9 2xl:w-9 2xl:text-sm">
                     {step.n}
                   </span>
                   <h3 className="text-xl font-bold tracking-tight text-ink">
@@ -74,7 +75,7 @@ export default function Process() {
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

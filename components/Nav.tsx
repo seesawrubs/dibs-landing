@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CAL_STRATEGY } from "./CalInit";
+import Container from "./Container";
 
 const links = [
-  { label: "How it Works", href: "#how-it-works" },
-  { label: "Services", href: "#services" },
-  { label: "Proof", href: "#proof" },
-  { label: "Process", href: "#process" },
-  { label: "Audience", href: "#who-for" },
+  { label: "The Studio", href: "#the-studio" },
+  { label: "Approach", href: "#approach" },
+  { label: "Work", href: "#selected-work" },
+  { label: "Partners", href: "#who-for" },
 ];
 
 export default function Nav() {
@@ -25,8 +25,9 @@ export default function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
-      <div
-        className={`mx-auto max-w-6xl rounded-[1.6rem] border transition-all duration-300 ${
+      <Container
+        as="div"
+        className={`rounded-[1.6rem] border transition-all duration-300 ${
           scrolled || menuOpen
             ? "border-line bg-paper/88 shadow-[0_18px_55px_rgba(0,0,0,0.55)] backdrop-blur-xl"
             : "border-transparent bg-paper/62 backdrop-blur-md"
@@ -64,9 +65,9 @@ export default function Nav() {
               data-cal-namespace={CAL_STRATEGY.namespace}
               data-cal-link={CAL_STRATEGY.link}
               data-cal-config='{"layout":"month_view"}'
-              className="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-paper shadow-[0_0_24px_rgba(0,232,123,0.35)] transition-colors hover:bg-gold-bright sm:block"
+              className="hidden rounded-full border border-line bg-paper/70 px-5 py-2.5 text-sm font-medium text-ink-soft transition-all hover:bg-gold hover:text-paper sm:block"
             >
-              Book a Strategy Call
+              Begin a conversation
             </button>
             <button
               onClick={() => setMenuOpen((v) => !v)}
@@ -120,15 +121,15 @@ export default function Nav() {
                   data-cal-link={CAL_STRATEGY.link}
                   data-cal-config='{"layout":"month_view"}'
                   onClick={() => setMenuOpen(false)}
-                  className="mt-3 rounded-full bg-gold px-5 py-3 text-sm font-semibold text-paper"
+                  className="mt-3 rounded-full border border-line bg-paper/70 px-5 py-3 text-sm font-medium text-ink"
                 >
-                  Book a Strategy Call
+                  Begin a conversation
                 </button>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </Container>
     </header>
   );
 }

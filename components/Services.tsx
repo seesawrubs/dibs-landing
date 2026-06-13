@@ -1,5 +1,6 @@
 "use client";
 
+import Container from "./Container";
 import Reveal from "./Reveal";
 
 const offerings = [
@@ -84,7 +85,7 @@ export default function Services() {
 
   return (
     <section id="services" className="bg-paper-deep/70">
-      <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+      <Container className="py-24 sm:py-32">
         <Reveal>
           <p className="section-label text-gold">03 Engagements</p>
           <div className="mt-6 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
@@ -100,8 +101,8 @@ export default function Services() {
           </div>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-12">
-          <Reveal delay={0.08} className="lg:col-span-7">
+        <div className="mt-16 grid gap-6 lg:grid-cols-12 2xl:gap-8">
+          <Reveal delay={0.08} className="lg:col-span-7 2xl:col-span-8">
             <article className="panel-dark h-full rounded-[2rem] p-7 text-ink sm:p-9">
               <p className="section-label text-clay">{featured.tag}</p>
               <h3 className="mt-5 max-w-xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
@@ -111,7 +112,7 @@ export default function Services() {
                 {featured.summary}
               </p>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-4">
                 {featured.points.map((point) => (
                   <div
                     key={point}
@@ -143,7 +144,7 @@ export default function Services() {
             </article>
           </Reveal>
 
-          <div className="grid gap-6 lg:col-span-5">
+          <div className="grid gap-6 lg:col-span-5 2xl:col-span-4">
             {secondary.map((offering, index) => (
               <Reveal key={offering.name} delay={0.14 + index * 0.08}>
                 <article className="h-full rounded-[1.85rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-7">
@@ -183,7 +184,7 @@ export default function Services() {
             ))}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

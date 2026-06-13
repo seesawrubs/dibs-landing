@@ -15,6 +15,15 @@
 
   --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
+
+  /* 
+   * Large/ultrawide container strategy (2026-06):
+   * - Reading width for prose, headings, long text MUST stay capped (max-w-2xl ~ max-w-[42rem] or similar inside).
+   * - The page container itself may relax at xl/2xl so layout surfaces (grids, split columns, card groups) earn the extra space.
+   * - Decorative layers (ambient-grid, radials, inset-x-0 elements) are intentionally full-bleed and should feel atmospheric on huge screens.
+   * - Never stretch single cards or body text to fill the entire viewport.
+   * - Default container: max-w-6xl → xl:max-w-7xl → 2xl:max-w-[88rem] with extra side padding at 2xl+.
+   */
 }
 
 html {
@@ -114,6 +123,49 @@ body {
 .rule {
   height: 1px;
   background: var(--color-line);
+}
+
+/* === New elegant studio utilities (2026 redesign) === */
+
+/* Airy editorial text blocks */
+.editorial {
+  font-feature-settings: "tnum", "ss01";
+}
+
+/* Refined architectural divider (used sparingly for breathing) */
+.rule-gold {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 232, 123, 0.18), transparent);
+}
+
+/* Quiet numbered list treatment for studio principles / layers */
+.studio-list {
+  counter-reset: studio;
+}
+.studio-list > * {
+  counter-increment: studio;
+}
+.studio-list > *::before {
+  content: counter(studio, decimal-leading-zero);
+  font-feature-settings: "tnum";
+  letter-spacing: 3px;
+  color: rgba(0, 232, 123, 0.65);
+  margin-right: 0.9rem;
+  font-size: 0.75rem;
+}
+
+/* Softer, more open surface treatment (less heavy panels) */
+.surface-soft {
+  background: rgba(13, 22, 16, 0.55);
+  border: 1px solid rgba(0, 232, 123, 0.09);
+}
+
+/* Large-screen editorial breathing helper */
+@screen 2xl {
+  .breathe-2xl {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
