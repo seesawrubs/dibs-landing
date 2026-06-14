@@ -23,7 +23,7 @@ The mobile menu rendered its links inside the conditionally-mounted framer-motio
 
 **Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 150 kB.
 
-**Commit:** `TBD` fix(nav): mobile hamburger links now scroll to sections + improved header offset (pushed to `main`).
+**Commit:** `bc21fa5` fix(nav): mobile hamburger links now properly scroll to sections (pushed to `main`).
 
 ### Build 1 — Initial landing page (2026-06-10)
 
