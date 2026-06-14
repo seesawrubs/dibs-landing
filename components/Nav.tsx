@@ -23,6 +23,34 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Controlled navigation for mobile menu links (Option 1).
+  // We take over the click so we can reliably close the animated menu panel
+  // *before* attempting to scroll. This avoids the browser suppressing the
+  // fragment scroll while the fixed header is mutating height + the framer-motion
+  // exit animation is running (the root cause of "hash updates but no scroll"
+  // and "have to refresh on mobile").
+  const scrollToSection = (href: string) => {
+    const id = href.replace('#', '');
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleMobileNavClick = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMenuOpen(false);
+
+    // Small delay lets the exit animation begin (header starts shrinking)
+    // before we scroll. The existing scroll-margin-top on sections provides
+    // the final clearance under the (now shorter) fixed header.
+    setTimeout(() => {
+      scrollToSection(href);
+      // Ensure the hash is in the URL for sharing / refresh / history.
+      window.history.replaceState(null, '', href);
+    }, 80);
+  };
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <Container
@@ -36,10 +64,16 @@ export default function Nav() {
         <nav className="flex min-h-[4.5rem] items-center justify-between px-5 sm:px-6">
           <a
             href="#top"
-            onClick={() => {
+            onClick={(e) => {
               if (menuOpen) {
-                setTimeout(() => setMenuOpen(false), 0);
+                e.preventDefault();
+                setMenuOpen(false);
+                setTimeout(() => {
+                  scrollToSection('#top');
+                  window.history.replaceState(null, '', '#top');
+                }, 80);
               }
+              // When menu is closed we let the native href work (desktop + collapsed mobile)
             }}
             className="flex items-center gap-3"
           >
@@ -118,11 +152,7 @@ export default function Nav() {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={() => {
-                      // Defer closing so the browser can complete the native hash navigation first.
-                      // Synchronous setState + framer-motion exit was suppressing scroll on mobile.
-                      setTimeout(() => setMenuOpen(false), 0);
-                    }}
+                    onClick={handleMobileNavClick(link.href)}
                     className="rounded-2xl px-4 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
                   >
                     {link.label}

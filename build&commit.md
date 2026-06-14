@@ -6,6 +6,36 @@ her is the link for the repo, you will intialize this repo and then append each 
 
 ## Build Log
 
+### Build 6 — Reliable mobile navbar navigation (controlled scroll, Option 1) (2026-06-14)
+
+**What was fixed:**
+
+- Tapping links in the mobile hamburger menu ("The Studio", "Approach", "Work", "Partners") would update the URL hash but the page would not scroll to the target section. Users had to manually refresh the page afterward for the browser to land on the correct section.
+- The logo link (when the mobile menu was open) had the same problem.
+- Desktop navigation worked fine the whole time.
+
+**Root cause (after testing the initial attempt):**
+
+The Build 5 timeout-only approach was not enough. The mobile links lived inside `{menuOpen && <motion.div exit={{ height: 0 }} ...>}` (with AnimatePresence) inside the fixed header container. Even deferred `setMenuOpen(false)`, the concurrent unmount + height animation + changing fixed ancestor height caused mobile browsers (particularly iOS Safari) to suppress the scroll portion of native fragment navigation while still allowing the hash to update in the URL. A refresh worked because the browser's initial-load hash handling happens before any React state or animations.
+
+**Fix (chosen Option 1 — controlled navigation):**
+
+- Added `scrollToSection(href)` helper that does `document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' })`.
+- Added `handleMobileNavClick(href)` for the mobile menu links:
+  - `e.preventDefault()`
+  - Immediately `setMenuOpen(false)` (starts the exit animation and header shrink)
+  - After a short 80ms delay (lets the animation begin so layout stabilizes), perform the explicit scroll + manually set the hash via `window.history.replaceState(null, '', href)`
+- Applied identical controlled behavior to the logo `<a href="#top">` when the mobile menu is open.
+- Desktop nav items (inside the `lg:flex` pill) were left as pure native `<a href>` with zero handlers.
+- Leverages the existing `section { scroll-margin-top: 7.5rem }` for final clearance under the fixed header.
+- The Cal button in the mobile menu continues to just close the menu (no navigation involved).
+
+**Result:** Reliable one-tap scrolling from the mobile navbar on touch devices. No more "have to refresh". Native desktop behavior preserved. Smooth scrolling and hash-in-URL retained.
+
+**Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 150 kB.
+
+**Commit:** `TBD` fix(nav): implement Option 1 controlled scroll for mobile menu links (pushed to `main`).
+
 ### Build 5 — Mobile navbar section navigation fix (2026-06-14)
 
 **What was fixed:**
