@@ -34,7 +34,7 @@ The Build 5 timeout-only approach was not enough. The mobile links lived inside 
 
 **Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 150 kB.
 
-**Commit:** `TBD` fix(nav): implement Option 1 controlled scroll for mobile menu links (pushed to `main`).
+**Commit:** `0a4671b` fix(nav): implement Option 1 controlled scroll for mobile menu links (pushed to `main`).
 
 ### Build 5 — Mobile navbar section navigation fix (2026-06-14)
 
