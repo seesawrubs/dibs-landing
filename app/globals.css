@@ -31,7 +31,8 @@ html {
 }
 
 section {
-  scroll-margin-top: 6.5rem;
+  /* A bit generous to account for the fixed nav + the taller mobile menu at click time */
+  scroll-margin-top: 7.5rem;
 }
 
 body {

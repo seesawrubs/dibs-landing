@@ -6,6 +6,25 @@ her is the link for the repo, you will intialize this repo and then append each 
 
 ## Build Log
 
+### Build 5 — Mobile navbar section navigation fix (2026-06-14)
+
+**What was fixed:**
+
+- Mobile top navbar links ("The Studio", "Approach", "Work", "Partners") now correctly scroll the page to the target sections. Previously they did nothing on mobile/touch devices while working perfectly on desktop.
+- Also made the logo link close the mobile menu cleanly when tapped (for #top).
+
+**Root cause:**
+The mobile menu rendered its links inside the conditionally-mounted framer-motion panel (`{menuOpen && <motion.div>}`). Each link had `onClick={() => setMenuOpen(false)}`. Calling state synchronously during the click started the exit animation (height collapse) on the fixed header container at the exact same time the browser tried to process the `href="#id"` fragment navigation. Mobile browsers (iOS Safari, Android) commonly suppress or cancel native hash scrolling in this situation. Desktop nav items had no `onClick` at all, so they were unaffected.
+
+**Fix:**
+- Mobile section links + logo now do `setTimeout(() => setMenuOpen(false), 0)` so the browser's default anchor behavior + `html { scroll-behavior: smooth }` can run first.
+- Increased `section { scroll-margin-top }` from 6.5rem → 7.5rem in globals.css for safer clearance under the fixed header (especially right after the mobile menu begins closing).
+- The Cal "Begin a conversation" button in the menu still closes immediately (no href navigation involved).
+
+**Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 150 kB.
+
+**Commit:** `TBD` fix(nav): mobile hamburger links now scroll to sections + improved header offset (pushed to `main`).
+
 ### Build 1 — Initial landing page (2026-06-10)
 
 **What was built:**

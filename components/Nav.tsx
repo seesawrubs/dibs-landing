@@ -34,7 +34,15 @@ export default function Nav() {
         }`}
       >
         <nav className="flex min-h-[4.5rem] items-center justify-between px-5 sm:px-6">
-          <a href="#top" className="flex items-center gap-3">
+          <a
+            href="#top"
+            onClick={() => {
+              if (menuOpen) {
+                setTimeout(() => setMenuOpen(false), 0);
+              }
+            }}
+            className="flex items-center gap-3"
+          >
             <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gold text-[0.72rem] font-black tracking-[0.18em] text-paper shadow-[0_0_28px_rgba(0,232,123,0.45)]">
               DBS
             </span>
@@ -110,7 +118,11 @@ export default function Nav() {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => {
+                      // Defer closing so the browser can complete the native hash navigation first.
+                      // Synchronous setState + framer-motion exit was suppressing scroll on mobile.
+                      setTimeout(() => setMenuOpen(false), 0);
+                    }}
                     className="rounded-2xl px-4 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
                   >
                     {link.label}
