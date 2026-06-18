@@ -47,7 +47,7 @@ Introduced GSAP as a second motion library *alongside* the existing Framer Motio
 
 **Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS ~202 kB.
 
-**Commit:** `cac8cd0` feat(landing): full structure revamp + compact pinned Approach section (pushed to `main`).
+**Commit:** `cc76358` feat(landing): full structure revamp + compact pinned Approach section (pushed to `main`).
 
 ### Build 6 — Reliable mobile navbar navigation (controlled scroll, Option 1) (2026-06-14)
 
