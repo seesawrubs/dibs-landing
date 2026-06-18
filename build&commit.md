@@ -27,7 +27,7 @@ Introduced GSAP as a second motion library *alongside* the existing Framer Motio
 
 **Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 199 kB (up from 150 kB — the cost of adding GSAP + ScrollTrigger + SplitText on top of Framer Motion).
 
-**Commit:** `<HASH>` feat(motion): GSAP cinematic scroll layer — SplitText hero + pinned horizontal Approach (committed to `main`).
+**Commit:** `1215209` feat(motion): GSAP cinematic scroll layer — SplitText hero + pinned horizontal Approach (committed to `main`).
 
 ### Build 6 — Reliable mobile navbar navigation (controlled scroll, Option 1) (2026-06-14)
 
