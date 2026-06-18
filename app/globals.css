@@ -126,6 +126,13 @@ body {
   background: var(--color-line);
 }
 
+/* SplitText masked line reveal (Hero). The headline uses a tight line-height,
+   so give each split line a little vertical room; otherwise the mask's
+   overflow:clip can shave descenders (g, p, y) once the reveal settles. */
+.hero-line {
+  padding-bottom: 0.12em;
+}
+
 /* === New elegant studio utilities (2026 redesign) === */
 
 /* Airy editorial text blocks */

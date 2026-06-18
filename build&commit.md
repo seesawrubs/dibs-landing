@@ -6,6 +6,29 @@ her is the link for the repo, you will intialize this repo and then append each 
 
 ## Build Log
 
+### Build 7 — GSAP cinematic scroll layer (SplitText hero + pinned horizontal Approach) (2026-06-17)
+
+**What was built:**
+
+Introduced GSAP as a second motion library *alongside* the existing Framer Motion (Framer Motion and the `Reveal` component are untouched). GSAP drives a new "cinematic scroll story" layer, following the official GSAP skills now vendored under `skills/`.
+
+- **`lib/gsap.ts` (new)** — single registration point for `gsap`, `ScrollTrigger`, `SplitText`, and `useGSAP`. SSR-guarded (`typeof window`), so plugins are always registered before any tween and nothing runs during server render. All components import GSAP from `@/lib/gsap`.
+- **Hero (`Hero.tsx`) — re-animated with GSAP** (Framer Motion removed from this component only):
+  - Headline is split into lines with **SplitText** and revealed with a clipped **mask** wipe. The split runs only after `document.fonts.ready` so line breaks are never computed against a fallback font.
+  - One **`useGSAP` entrance timeline**: line wipe → label → subhead → CTA → panel → operating-layer rows (staggered).
+  - **Scroll-scrubbed parallax** (`ScrollTrigger`, `scrub: true`) on the radial glow, ambient grid, and the panel for depth.
+- **Approach (`HowWeWork.tsx`) — pinned horizontal scroll:**
+  - Desktop (`min-width: 1024px`): the region is **pinned** and the 5 step-cards **scrub horizontally** (`ease: "none"` for a 1:1 scroll mapping) with a thin gold progress rail.
+  - Mobile/tablet: graceful fallback to a vertical stack with a `ScrollTrigger.batch` staggered fade-up.
+  - The "engagement shapes" narrative moved below the pinned region so it flows after the scrub completes.
+- **Accessibility:** every GSAP effect is wrapped in `gsap.matchMedia()` with an explicit `(prefers-reduced-motion: reduce)` branch — motion-sensitive users get the static, fully-legible page (no transforms, all content visible). Existing CSS reduced-motion handling retained.
+- **`app/globals.css`** — added a `.hero-line` rule (`padding-bottom: 0.12em`) so the masked line reveal doesn't shave descenders under the headline's tight `leading-[0.95]`.
+- Added dependencies: `gsap`, `@gsap/react`.
+
+**Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS: 199 kB (up from 150 kB — the cost of adding GSAP + ScrollTrigger + SplitText on top of Framer Motion).
+
+**Commit:** `<HASH>` feat(motion): GSAP cinematic scroll layer — SplitText hero + pinned horizontal Approach (committed to `main`).
+
 ### Build 6 — Reliable mobile navbar navigation (controlled scroll, Option 1) (2026-06-14)
 
 **What was fixed:**

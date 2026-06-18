@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { gsap, SplitText, useGSAP } from "@/lib/gsap";
 import { CAL_STRATEGY } from "./CalInit";
 import Container from "./Container";
 
@@ -23,20 +24,137 @@ const operatingLayers = [
   },
 ];
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 export default function Hero() {
+  const root = useRef<HTMLElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const labelRef = useRef<HTMLParagraphElement>(null);
+  const subRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      mm.add(
+        {
+          animate: "(prefers-reduced-motion: no-preference)",
+          reduce: "(prefers-reduced-motion: reduce)",
+        },
+        (ctx) => {
+          const conditions = ctx.conditions as {
+            animate: boolean;
+            reduce: boolean;
+          };
+
+          const rows = panelRef.current
+            ? gsap.utils.toArray<HTMLElement>(
+                panelRef.current.querySelectorAll("[data-row]")
+              )
+            : [];
+          const intro = [labelRef.current, subRef.current, ctaRef.current];
+
+          // Reduced motion: show everything, animate nothing.
+          if (conditions.reduce) {
+            gsap.set([...intro, panelRef.current, headlineRef.current, ...rows], {
+              autoAlpha: 1,
+              clearProps: "transform",
+            });
+            return;
+          }
+
+          // Hide the pieces up front so there's no flash before the intro plays.
+          gsap.set([...intro, panelRef.current, headlineRef.current], {
+            autoAlpha: 0,
+          });
+
+          let split: SplitText | null = null;
+          let tl: gsap.core.Timeline | null = null;
+
+          const build = () => {
+            if (!headlineRef.current) return;
+
+            // Split into lines, each wrapped in a clipped mask for a clean reveal.
+            split = SplitText.create(headlineRef.current, {
+              type: "lines",
+              mask: "lines",
+              linesClass: "hero-line",
+            });
+
+            gsap.set(headlineRef.current, { autoAlpha: 1 });
+
+            tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            tl.from(split.lines, {
+              yPercent: 118,
+              duration: 1.1,
+              stagger: 0.12,
+            })
+              .to(labelRef.current, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.15)
+              .to(subRef.current, { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.65")
+              .to(ctaRef.current, { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.55")
+              .to(
+                panelRef.current,
+                { autoAlpha: 1, y: 0, duration: 0.9 },
+                "-=0.7"
+              )
+              .from(
+                rows,
+                { autoAlpha: 0, y: 14, duration: 0.6, stagger: 0.09 },
+                "-=0.55"
+              );
+          };
+
+          // Start from a gently lowered position for the fade-up pieces.
+          gsap.set(intro, { y: 18 });
+          gsap.set(panelRef.current, { y: 26 });
+
+          // Split lines only after fonts load, otherwise line breaks can be wrong.
+          if (document.fonts && document.fonts.status !== "loaded") {
+            document.fonts.ready.then(build);
+          } else {
+            build();
+          }
+
+          // Scroll-scrubbed parallax on the atmospheric layers + the panel.
+          const parallax = gsap.timeline({
+            scrollTrigger: {
+              trigger: root.current,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+          });
+          parallax
+            .to(glowRef.current, { yPercent: 24, ease: "none" }, 0)
+            .to(gridRef.current, { yPercent: 38, autoAlpha: 0.15, ease: "none" }, 0)
+            .to(panelRef.current, { yPercent: -8, ease: "none" }, 0);
+
+          return () => {
+            tl?.kill();
+            split?.revert();
+          };
+        }
+      );
+    },
+    { scope: root }
+  );
+
   return (
     <section
+      ref={root}
       id="top"
       className="relative overflow-hidden pt-[6.5rem] sm:pt-[7.5rem]"
     >
       {/* Atmospheric foundation — kept and made more cinematic */}
       <div
+        ref={glowRef}
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-14 h-[42rem] bg-[radial-gradient(circle_at_top,_rgba(0,232,123,0.13),_transparent_48%)]"
       />
       <div
+        ref={gridRef}
         aria-hidden="true"
         className="ambient-grid pointer-events-none absolute inset-x-0 top-8 h-[40rem] opacity-50"
       />
@@ -45,34 +163,28 @@ export default function Hero() {
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center 2xl:gap-16">
           {/* Left — confident, editorial headline */}
           <div>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease }}
+            <p
+              ref={labelRef}
               className="section-label text-clay tracking-[0.28em]"
             >
               A studio for complete digital businesses
-            </motion.p>
+            </p>
 
-            <h1 className="mt-5 max-w-[18ch] text-[3.1rem] font-semibold leading-[0.95] tracking-[-0.025em] text-ink sm:text-7xl lg:text-[5.75rem] 2xl:text-[6.1rem]">
+            <h1
+              ref={headlineRef}
+              className="mt-5 max-w-[18ch] text-[3.1rem] font-semibold leading-[0.95] tracking-[-0.025em] text-ink sm:text-7xl lg:text-[5.75rem] 2xl:text-[6.1rem]"
+            >
               We design and run the operating systems behind exceptional digital businesses.
             </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.12, ease }}
+            <p
+              ref={subRef}
               className="mt-6 max-w-[42ch] text-[15px] leading-relaxed text-ink-mute sm:text-lg"
             >
               Strategy, product, payments, operations, and growth — composed as one coherent system rather than five separate vendors.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.22, ease }}
-              className="mt-9"
-            >
+            <div ref={ctaRef} className="mt-9">
               <button
                 data-cal-namespace={CAL_STRATEGY.namespace}
                 data-cal-link={CAL_STRATEGY.link}
@@ -89,21 +201,17 @@ export default function Hero() {
                 The studio
                 <span className="text-gold">→</span>
               </a>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right — quiet, elegant operating layers in a card treatment */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.85, delay: 0.18, ease }}
-          >
+          <div ref={panelRef}>
             <div className="panel-dark rounded-[1.75rem] border border-line-dark p-8 text-ink/90 lg:p-9">
               <p className="section-label text-clay">What we compose as one</p>
 
               <div className="mt-6 space-y-6">
                 {operatingLayers.map((layer, index) => (
-                  <div key={index} className="group">
+                  <div key={index} data-row className="group">
                     <div className="flex items-baseline gap-3">
                       <span className="text-gold/90 text-sm tabular-nums tracking-[3px]">{(index + 1).toString().padStart(2, "0")}</span>
                       <p className="text-[15px] font-medium tracking-[-0.1px] text-ink group-hover:text-gold transition-colors">
@@ -117,7 +225,7 @@ export default function Hero() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Very light, confident closer — removed the old "modes" and friction chips for air */}
