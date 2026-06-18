@@ -72,7 +72,7 @@ export default function Solution() {
                 delay={index * 0.08}
                 className={index % 2 === 0 ? "lg:pr-10" : "lg:pl-10"}
               >
-                <article className="rounded-[1.9rem] border border-line bg-paper/78 p-6 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-8 2xl:p-9">
+                <article className="rounded-[1.9rem] border border-line bg-paper/78 p-6 shadow-[0_18px_50px_rgba(202,230,22,0.06)] sm:p-8 2xl:p-9">
                   <div className="grid gap-4 sm:grid-cols-[5rem_1fr] sm:items-start">
                     <p className="serif-accent text-4xl text-gold">{pillar.n}</p>
                     <div>

@@ -38,7 +38,7 @@ export default function FinalCta() {
                   data-cal-namespace={CAL_STRATEGY.namespace}
                   data-cal-link={CAL_STRATEGY.link}
                   data-cal-config='{"layout":"month_view"}'
-                  className="mt-6 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-paper shadow-[0_0_32px_rgba(0,232,123,0.35)] transition-colors hover:bg-gold-bright"
+                  className="mt-6 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-paper shadow-[0_0_32px_rgba(202,230,22,0.35)] transition-colors hover:bg-gold-bright"
                 >
                   Book Your Strategy Call
                 </button>

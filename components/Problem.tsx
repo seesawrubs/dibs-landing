@@ -65,7 +65,7 @@ function MorphChip({
           {role}
         </span>
         <span
-          className="col-start-1 row-start-1 flex items-center justify-center whitespace-nowrap rounded-full bg-gold px-4 py-2 text-sm font-semibold text-paper shadow-[0_0_24px_rgba(0,232,123,0.35)]"
+          className="col-start-1 row-start-1 flex items-center justify-center whitespace-nowrap rounded-full bg-gold px-4 py-2 text-sm font-semibold text-paper shadow-[0_0_24px_rgba(202,230,22,0.35)]"
           style={{
             backfaceVisibility: "hidden",
             transform: "rotateX(180deg)",
@@ -85,7 +85,7 @@ export default function Problem() {
   const punchlineDelay = FLIP_BASE_DELAY + swaps.length * FLIP_STAGGER + 0.2;
 
   return (
-    <section className="relative overflow-hidden bg-paper-deep/70 text-ink">
+    <section id="problem" className="relative overflow-hidden bg-paper-deep/70 text-ink">
       <div
         aria-hidden="true"
         className="ambient-grid-dark pointer-events-none absolute inset-0 opacity-70"
@@ -94,7 +94,7 @@ export default function Problem() {
         <div className="grid gap-12 lg:grid-cols-[1fr_22rem] lg:items-start">
           <div>
             <Reveal>
-              <p className="section-label text-clay">01 Problem</p>
+              <p className="section-label text-clay">The problem</p>
             </Reveal>
             <Reveal className="mt-6">
               <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
@@ -145,7 +145,7 @@ export default function Problem() {
               />
             ))}
             <motion.span
-              className="ml-1 whitespace-nowrap rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-paper shadow-[0_0_32px_rgba(102,255,176,0.4)]"
+              className="ml-1 whitespace-nowrap rounded-full bg-gold-bright px-4 py-2 text-sm font-semibold text-paper shadow-[0_0_32px_rgba(228,243,95,0.4)]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : undefined}
               transition={{

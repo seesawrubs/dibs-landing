@@ -46,7 +46,7 @@ export default function WhoFor() {
                 delay={index * 0.08}
                 className={index === 2 ? "sm:col-span-2" : ""}
               >
-                <article className="h-full rounded-[1.75rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-7 2xl:p-8">
+                <article className="h-full rounded-[1.75rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(202,230,22,0.06)] sm:p-7 2xl:p-8">
                   <h3 className="text-2xl font-bold tracking-tight text-ink">
                     {audience.title}
                   </h3>

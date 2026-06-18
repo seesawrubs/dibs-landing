@@ -70,7 +70,7 @@ function BookingButton({
       data-cal-config='{"layout":"month_view"}'
       className={`rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
         dark
-          ? "bg-gold text-paper shadow-[0_0_28px_rgba(0,232,123,0.35)] hover:bg-gold-bright"
+          ? "bg-gold text-paper shadow-[0_0_28px_rgba(202,230,22,0.35)] hover:bg-gold-bright"
           : "border border-line bg-paper/75 text-ink hover:bg-paper-deep"
       }`}
     >
@@ -84,10 +84,10 @@ export default function Services() {
   const secondary = offerings.filter((offering) => !offering.featured);
 
   return (
-    <section id="services" className="bg-paper-deep/70">
-      <Container className="py-24 sm:py-32">
+    <section id="engage" className="bg-paper-deep/70">
+      <Container className="py-20 sm:py-28">
         <Reveal>
-          <p className="section-label text-gold">03 Engagements</p>
+          <p className="section-label text-gold">Engagements</p>
           <div className="mt-6 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
             <h2 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
               Choose the level of ownership you want us to{" "}
@@ -147,7 +147,7 @@ export default function Services() {
           <div className="grid gap-6 lg:col-span-5 2xl:col-span-4">
             {secondary.map((offering, index) => (
               <Reveal key={offering.name} delay={0.14 + index * 0.08}>
-                <article className="h-full rounded-[1.85rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-7">
+                <article className="h-full rounded-[1.85rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(202,230,22,0.06)] sm:p-7">
                   <p className="section-label text-gold">{offering.tag}</p>
                   <h3 className="mt-4 text-2xl font-bold leading-snug tracking-tight text-ink">
                     {offering.name}

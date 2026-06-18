@@ -61,7 +61,7 @@ export default function Process() {
             {steps.map((step, index) => (
               <Reveal key={step.n} delay={index * 0.06}>
                 <article className="relative rounded-[1.75rem] border border-line-dark bg-ink/6 p-5 pl-16 sm:p-7 sm:pl-20 2xl:p-8 2xl:pl-24">
-                  <span className="absolute left-4 top-5 grid h-7 w-7 place-items-center rounded-full bg-gold text-xs font-bold text-paper shadow-[0_0_20px_rgba(0,232,123,0.4)] sm:left-6 sm:top-6 sm:h-8 sm:w-8 2xl:left-8 2xl:top-7 2xl:h-9 2xl:w-9 2xl:text-sm">
+                  <span className="absolute left-4 top-5 grid h-7 w-7 place-items-center rounded-full bg-gold text-xs font-bold text-paper shadow-[0_0_20px_rgba(202,230,22,0.4)] sm:left-6 sm:top-6 sm:h-8 sm:w-8 2xl:left-8 2xl:top-7 2xl:h-9 2xl:w-9 2xl:text-sm">
                     {step.n}
                   </span>
                   <h3 className="text-xl font-bold tracking-tight text-ink">

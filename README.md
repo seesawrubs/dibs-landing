@@ -23,7 +23,7 @@ npm run build  # production build
 
 `app/page.tsx` composes the sections in order, one component each in `components/`:
 
-Nav → Hero → Problem → Solution → Services → Proof → Process → WhoFor → Faq → FinalCta → Footer
+Nav → Hero → Problem → TheStudio → Engagements → HowWeWork → Proof → WhoFor → Faq → Invitation → Footer
 
 Notable behaviors:
 

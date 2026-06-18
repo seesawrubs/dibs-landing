@@ -27,8 +27,8 @@ export default function Proof() {
   const secondary = projects.find((project) => !project.featured)!;
 
   return (
-    <section id="selected-work" className="bg-transparent">
-      <Container className="py-24 sm:py-32">
+    <section id="work" className="bg-transparent">
+      <Container className="py-16 sm:py-24">
         <Reveal>
           <p className="section-label text-gold">Work</p>
           <h2 className="mt-6 max-w-3xl text-3xl font-semibold tracking-[-0.01em] leading-none text-ink sm:text-5xl">
@@ -43,7 +43,7 @@ export default function Proof() {
           <Reveal delay={0.08} className="lg:col-span-7">
             <article className="panel-dark h-full rounded-[2rem] p-7 text-ink sm:p-9 2xl:p-10">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_12px_rgba(0,232,123,0.8)]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-gold shadow-[0_0_12px_rgba(202,230,22,0.8)]" />
                 <p className="section-label text-clay">
                   {featured.status}
                 </p>
@@ -68,7 +68,7 @@ export default function Proof() {
           </Reveal>
 
           <Reveal delay={0.16} className="lg:col-span-5">
-            <article className="h-full rounded-[2rem] border border-line bg-paper p-7 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-8 2xl:p-9">
+            <article className="h-full rounded-[2rem] border border-line bg-paper p-7 shadow-[0_18px_50px_rgba(202,230,22,0.06)] sm:p-8 2xl:p-9">
               <p className="section-label text-gold">{secondary.status}</p>
               <h3 className="mt-5 text-3xl font-bold tracking-tight text-ink">
                 {secondary.name}

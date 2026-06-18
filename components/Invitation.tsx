@@ -15,14 +15,14 @@ export default function Invitation() {
           />
 
           <Reveal>
-            <p className="section-label text-clay tracking-[0.3em]">An invitation</p>
+            <p className="section-label text-clay tracking-[0.3em]">Next step</p>
 
             <h2 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.015em] sm:text-5xl">
-              If the way we think about building and running digital businesses resonates, the most natural next step is a conversation.
+              Ready to stop stitching tools together and start running one coherent system?
             </h2>
 
             <p className="mt-6 text-lg leading-relaxed text-ink-mute max-w-xl mx-auto">
-              We’ll look at what you’re building, the system you have today, and whether there’s a natural fit for a true operating partnership.
+              Book a free strategy call. We’ll look at your offer, current stack, and exactly what should happen next — no pitch, just clarity.
             </p>
 
             <div className="mt-10">
@@ -30,7 +30,7 @@ export default function Invitation() {
                 data-cal-namespace={CAL_STRATEGY.namespace}
                 data-cal-link={CAL_STRATEGY.link}
                 data-cal-config='{"layout":"month_view"}'
-                className="rounded-full bg-gold px-9 py-4 text-base font-semibold text-paper shadow-[0_0_32px_rgba(0,232,123,0.35)] transition-all hover:bg-gold-bright hover:shadow-[0_0_48px_rgba(102,255,176,0.5)]"
+                className="rounded-full bg-gold px-9 py-4 text-base font-semibold text-paper shadow-[0_0_32px_rgba(202,230,22,0.35)] transition-all hover:bg-gold-bright hover:shadow-[0_0_48px_rgba(228,243,95,0.5)]"
               >
                 Begin a conversation
               </button>

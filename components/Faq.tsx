@@ -83,7 +83,7 @@ export default function Faq() {
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] 2xl:gap-16">
           <div>
             <Reveal>
-              <p className="section-label text-gold">07 FAQ</p>
+              <p className="section-label text-gold">FAQ</p>
               <h2 className="mt-6 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
                 Questions,{" "}
                 <span className="serif-accent font-normal text-gold">
@@ -99,7 +99,7 @@ export default function Faq() {
           </div>
 
           <Reveal delay={0.08}>
-            <div className="rounded-[2rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(0,232,123,0.06)] sm:p-8">
+            <div className="rounded-[2rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(202,230,22,0.06)] sm:p-8">
               {faqs.map((faq) => (
                 <FaqItem key={faq.q} q={faq.q} a={faq.a} />
               ))}

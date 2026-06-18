@@ -29,6 +29,26 @@ Introduced GSAP as a second motion library *alongside* the existing Framer Motio
 
 **Commit:** `1215209` feat(motion): GSAP cinematic scroll layer — SplitText hero + pinned horizontal Approach (committed to `main`).
 
+### Build 8 — Landing page structure revamp + Approach section spacing polish (2026-06-18)
+
+**What was built:**
+
+- Full structural revamp of the single-page landing for better conversion while keeping the premium dark editorial aesthetic (lime #CAE616 accent, GSAP cinematic moments, Framer Motion reveals).
+  - New flow in `app/page.tsx`: Hero → Problem (revived with morphing chips) → TheStudio → Engagements (revived Services.tsx with 3 Cal.com offerings: Launch flagship, Run & Grow retainer, Custom) → HowWeWork (Approach) → Proof → WhoFor → Faq (revived) → Invitation
+  - Updated `components/Nav.tsx` and `Footer.tsx` with accurate section links and mobile scroll handling.
+  - Integrated previously unused high-value components (Problem, Services, Faq) and cleaned stale references.
+- Fixed excessive empty vertical space "below" the "Clear steps. No mystery handoffs." headline (and the overall pinned horizontal section) especially visible when fully zoomed out:
+  - Removed forced `lg:min-h-[*vh]` and `justify-center` from the ScrollTrigger pin container (per GSAP skills best practices).
+  - Compacted header padding, progress rail, track padding, card widths (now 18rem) and internal padding/gaps for a tight visual panel.
+  - Reduced trailing note padding + adjacent Proof top padding.
+  - Followed patterns from `skills/gsap-scrolltrigger/`, `gsap-react/`, `gsap-core/`: `useGSAP` + `matchMedia` (desktop + prefers-reduced-motion), `pin: true` + inner `x` scrub with `ease: "none"`, `scrub`, `invalidateOnRefresh`.
+- Minor polish: section labels (removed old numbering), Invitation CTA copy for directness, Proof id consistency, small README update.
+- All Cal namespaces, accessibility, and existing animations preserved.
+
+**Build verification:** `next build` ✓ compiled, type-checked, prerendered static. First Load JS ~202 kB.
+
+**Commit:** `cac8cd0` feat(landing): full structure revamp + compact pinned Approach section (pushed to `main`).
+
 ### Build 6 — Reliable mobile navbar navigation (controlled scroll, Option 1) (2026-06-14)
 
 **What was fixed:**

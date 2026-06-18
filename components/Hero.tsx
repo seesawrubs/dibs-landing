@@ -151,7 +151,7 @@ export default function Hero() {
       <div
         ref={glowRef}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-14 h-[42rem] bg-[radial-gradient(circle_at_top,_rgba(0,232,123,0.13),_transparent_48%)]"
+        className="pointer-events-none absolute inset-x-0 top-14 h-[42rem] bg-[radial-gradient(circle_at_top,_rgba(202,230,22,0.13),_transparent_48%)]"
       />
       <div
         ref={gridRef}
@@ -189,7 +189,7 @@ export default function Hero() {
                 data-cal-namespace={CAL_STRATEGY.namespace}
                 data-cal-link={CAL_STRATEGY.link}
                 data-cal-config='{"layout":"month_view"}'
-                className="rounded-full bg-gold px-8 py-3.5 text-[13px] font-semibold tracking-[0.01em] text-paper shadow-[0_0_28px_rgba(0,232,123,0.32)] transition-all hover:bg-gold-bright hover:shadow-[0_0_42px_rgba(102,255,176,0.45)]"
+                className="rounded-full bg-gold px-8 py-3.5 text-[13px] font-semibold tracking-[0.01em] text-paper shadow-[0_0_28px_rgba(202,230,22,0.32)] transition-all hover:bg-gold-bright hover:shadow-[0_0_42px_rgba(228,243,95,0.45)]"
               >
                 Begin a conversation
               </button>

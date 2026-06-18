@@ -131,15 +131,15 @@ export default function HowWeWork() {
 
       <div
         ref={pinRef}
-        className="relative flex flex-col justify-center lg:h-screen"
+        className="relative flex flex-col lg:items-start"
       >
-        <Container className="pt-20 sm:pt-28 lg:pt-0 lg:pb-10">
+        <Container className="pt-12 sm:pt-16 lg:pt-2 lg:pb-0">
           <Reveal>
             <p className="section-label text-clay">How we work</p>
-            <h2 className="mt-5 max-w-[16ch] text-4xl font-semibold tracking-[-0.015em] leading-[0.98] sm:text-5xl lg:text-6xl">
+            <h2 className="mt-2 max-w-[16ch] text-4xl font-semibold tracking-[-0.015em] leading-[0.98] sm:text-5xl lg:text-6xl">
               Clear steps. No mystery handoffs.
             </h2>
-            <p className="mt-5 max-w-[44ch] text-[14px] leading-relaxed text-ink-mute">
+            <p className="mt-3 max-w-[44ch] text-[14px] leading-relaxed text-ink-mute">
               We keep the process transparent so strategy, craft, and speed stay
               aligned from the first conversation onward. On desktop, scroll to
               move through the sequence.
@@ -147,10 +147,10 @@ export default function HowWeWork() {
           </Reveal>
 
           {/* Progress rail (desktop horizontal scrub) */}
-          <div className="mt-8 hidden h-px w-40 overflow-hidden rounded-full bg-line lg:block">
+          <div className="mt-3 hidden h-px w-40 overflow-hidden rounded-full bg-line lg:block">
             <div
               ref={progressRef}
-              className="h-full w-full origin-left bg-gold shadow-[0_0_12px_rgba(0,232,123,0.7)]"
+              className="h-full w-full origin-left bg-gold shadow-[0_0_12px_rgba(202,230,22,0.7)]"
               style={{ transform: "scaleX(0)" }}
             />
           </div>
@@ -160,13 +160,13 @@ export default function HowWeWork() {
         <div className="overflow-hidden">
           <div
             ref={trackRef}
-            className="flex flex-col gap-4 px-5 pb-20 sm:px-8 lg:flex-row lg:flex-nowrap lg:gap-7 lg:px-12 lg:pb-0 lg:pt-10 2xl:px-16"
+            className="flex flex-col gap-4 px-5 pb-16 sm:px-8 lg:flex-row lg:flex-nowrap lg:gap-4 lg:px-8 lg:pb-0 lg:pt-2 2xl:px-10"
           >
             {steps.map((step) => (
               <article
                 key={step.n}
                 data-step
-                className="panel-dark relative rounded-[1.75rem] border border-line-dark p-7 sm:p-8 lg:flex lg:w-[24rem] lg:shrink-0 lg:flex-col lg:p-9"
+                className="panel-dark relative rounded-[1.75rem] border border-line-dark p-5 sm:p-6 lg:flex lg:w-[18rem] lg:shrink-0 lg:flex-col lg:p-5"
               >
                 <span className="font-mono text-sm tracking-[4px] text-gold/80">
                   {step.n}
@@ -183,14 +183,12 @@ export default function HowWeWork() {
         </div>
       </div>
 
-      {/* Light narrative on engagement shapes (no hard tiers or per-card CTAs) */}
-      <Container className="pb-20 sm:pb-28">
+      {/* Note on flexibility (after the explicit engagement options above) */}
+      <Container className="pb-6 sm:pb-10">
         <div className="rounded-[1.5rem] border border-line bg-paper/60 p-8 text-[13px] leading-relaxed text-ink-mute">
-          Engagements tend to take three natural shapes: a full launch
-          partnership that gets the first complete version built properly, an
-          ongoing operator relationship that keeps the system improving, or more
-          focused, surgical work on a specific layer. The right shape always
-          emerges from the first conversation.
+          The shape of an engagement is never forced. It might be a full launch
+          partnership, an ongoing operator relationship, or focused work on one
+          layer. The right form always emerges from the first conversation.
         </div>
       </Container>
     </section>

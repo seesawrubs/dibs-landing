@@ -7,8 +7,9 @@ import Container from "./Container";
 
 const links = [
   { label: "The Studio", href: "#the-studio" },
+  { label: "Engage", href: "#engage" },
   { label: "Approach", href: "#approach" },
-  { label: "Work", href: "#selected-work" },
+  { label: "Work", href: "#work" },
   { label: "Partners", href: "#who-for" },
 ];
 
@@ -77,7 +78,7 @@ export default function Nav() {
             }}
             className="flex items-center gap-3"
           >
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gold text-[0.72rem] font-black tracking-[0.18em] text-paper shadow-[0_0_28px_rgba(0,232,123,0.45)]">
+            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gold text-[0.72rem] font-black tracking-[0.18em] text-paper shadow-[0_0_28px_rgba(202,230,22,0.45)]">
               DBS
             </span>
             <div className="hidden md:block">
