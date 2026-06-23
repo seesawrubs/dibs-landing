@@ -13,8 +13,21 @@
   --color-line: rgba(202, 230, 22, 0.16);
   --color-line-dark: rgba(202, 230, 22, 0.24);
 
+  /* === Cyber-noir layer (2026-06) ===
+   * Deep blue-grey noir base + two-light cinematic accents:
+   * lime is the warm KEY light (scalpel use only), cyan is the cool RIM light. */
+  --color-noir: #040506;
+  --color-noir-2: #070a0d;
+  --color-noir-3: #0b1014;
+  --color-cyan: #7df9ff;
+  --color-cyan-dim: rgba(125, 249, 255, 0.14);
+  --color-hairline: rgba(180, 210, 220, 0.12);
+  --color-hairline-bright: rgba(180, 210, 220, 0.22);
+
   --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
+  --font-display: "Clash Display", "Satoshi", ui-sans-serif, sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, "SFMono-Regular", monospace;
 
   /* 
    * Large/ultrawide container strategy (2026-06):
@@ -38,9 +51,9 @@ section {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(202, 230, 22, 0.12), transparent 32%),
-    radial-gradient(circle at top right, rgba(228, 243, 95, 0.07), transparent 26%),
-    linear-gradient(180deg, #07120b 0%, #050807 24%, #030504 100%);
+    radial-gradient(circle at top left, rgba(125, 249, 255, 0.05), transparent 34%),
+    radial-gradient(circle at top right, rgba(202, 230, 22, 0.05), transparent 28%),
+    linear-gradient(180deg, #060809 0%, #040506 42%, #030405 100%);
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -174,6 +187,152 @@ body {
     padding-top: 2.25rem;
     padding-bottom: 2.25rem;
   }
+}
+
+/* ============================================================
+   CYBER-NOIR UTILITIES (2026-06 redesign)
+   Refined Bladerunner register: deep noir, neon bloom through
+   haze, two-light accents (lime key + cyan rim), mono HUD detail.
+   ============================================================ */
+
+.font-display { font-family: var(--font-display); }
+.font-mono-tech { font-family: var(--font-mono); }
+
+/* Mono technical label — replaces the old serif accent role */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+/* Deep noir backdrop for full-bleed cinematic sections */
+.noir-base {
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(11, 16, 20, 0.9), transparent 60%),
+    linear-gradient(180deg, #060809 0%, #040506 55%, #030405 100%);
+}
+
+/* Volumetric haze — slow drifting fog so neon blooms through atmosphere
+   rather than sitting flat on black. Two layers at different speeds. */
+.fog {
+  position: absolute;
+  inset: -20% -10% 0 -10%;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 20% 30%, rgba(202, 230, 22, 0.10), transparent 70%),
+    radial-gradient(45% 55% at 82% 22%, rgba(125, 249, 255, 0.08), transparent 72%),
+    radial-gradient(55% 60% at 60% 80%, rgba(125, 249, 255, 0.05), transparent 75%);
+  filter: blur(20px);
+  animation: fog-drift 26s ease-in-out infinite alternate;
+}
+.fog-2 {
+  animation: fog-drift-2 34s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+
+@keyframes fog-drift {
+  0%   { transform: translate3d(-2%, 0, 0) scale(1.05); }
+  100% { transform: translate3d(3%, -2%, 0) scale(1.12); }
+}
+@keyframes fog-drift-2 {
+  0%   { transform: translate3d(2%, 1%, 0) scale(1.1); }
+  100% { transform: translate3d(-3%, -1%, 0) scale(1.04); }
+}
+
+/* Hairline instrument panel — replaces heavy rounded glass cards */
+.hairline-panel {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(12, 18, 22, 0.66), rgba(5, 8, 10, 0.5));
+  border: 1px solid var(--color-hairline);
+  backdrop-filter: blur(14px);
+}
+.hairline-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* faint cyan rim light on the top edge */
+  background: linear-gradient(180deg, rgba(125, 249, 255, 0.10), transparent 18%);
+}
+
+/* HUD corner ticks for instrument panels */
+.hud-ticks::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--color-hairline-bright), var(--color-hairline-bright)) left top / 14px 1px no-repeat,
+    linear-gradient(var(--color-hairline-bright), var(--color-hairline-bright)) left top / 1px 14px no-repeat,
+    linear-gradient(var(--color-hairline-bright), var(--color-hairline-bright)) right bottom / 14px 1px no-repeat,
+    linear-gradient(var(--color-hairline-bright), var(--color-hairline-bright)) right bottom / 1px 14px no-repeat;
+}
+
+/* Neon bloom on hero display type — warm key light */
+.bloom-lime {
+  text-shadow:
+    0 0 28px rgba(202, 230, 22, 0.42),
+    0 0 70px rgba(202, 230, 22, 0.18);
+}
+
+/* Subtle chromatic aberration — used sparingly on the hero accent word */
+.aberrate {
+  position: relative;
+}
+.aberrate::before,
+.aberrate::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
+.aberrate::before { color: #ff3b6b; transform: translate(-1.5px, 0); }
+.aberrate::after  { color: var(--color-cyan); transform: translate(1.5px, 0); }
+
+/* Restrained scanline veil for cinematic sections */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.5;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.22) 3px,
+    transparent 4px
+  );
+  mask-image: radial-gradient(circle at center, black 30%, transparent 90%);
+}
+
+/* Live status pip */
+.pip {
+  position: relative;
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-gold);
+  box-shadow: 0 0 10px rgba(202, 230, 22, 0.9);
+}
+.pip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-gold);
+  animation: pip-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes pip-ping {
+  0%   { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

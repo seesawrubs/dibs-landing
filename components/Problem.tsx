@@ -59,7 +59,7 @@ function MorphChip({
         }}
       >
         <span
-          className="col-start-1 row-start-1 flex items-center justify-center whitespace-nowrap rounded-full border border-line-dark px-4 py-2 text-sm text-ink/45 line-through decoration-gold/70"
+          className="col-start-1 row-start-1 flex items-center justify-center whitespace-nowrap rounded-full border border-hairline px-4 py-2 text-sm text-ink/45 line-through decoration-gold/70"
           style={{ backfaceVisibility: "hidden" }}
         >
           {role}
@@ -85,7 +85,7 @@ export default function Problem() {
   const punchlineDelay = FLIP_BASE_DELAY + swaps.length * FLIP_STAGGER + 0.2;
 
   return (
-    <section id="problem" className="relative overflow-hidden bg-paper-deep/70 text-ink">
+    <section id="problem" className="relative overflow-hidden bg-noir-2/60 text-ink">
       <div
         aria-hidden="true"
         className="ambient-grid-dark pointer-events-none absolute inset-0 opacity-70"
@@ -94,13 +94,13 @@ export default function Problem() {
         <div className="grid gap-12 lg:grid-cols-[1fr_22rem] lg:items-start">
           <div>
             <Reveal>
-              <p className="section-label text-clay">The problem</p>
+              <p className="mono-label text-cyan">The problem</p>
             </Reveal>
             <Reveal className="mt-6">
-              <h2 className="max-w-4xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl">
+              <h2 className="font-display max-w-4xl text-3xl font-semibold leading-[1.05] tracking-[-0.01em] sm:text-5xl">
                 Most digital businesses are not broken because of ambition.
                 They are slowed down by{" "}
-                  <span className="serif-accent font-normal text-gold-bright">
+                  <span className="text-gold bloom-lime">
                     fragmentation
                   </span>
                 .
@@ -116,9 +116,9 @@ export default function Problem() {
           </div>
 
           <Reveal delay={0.18}>
-            <div className="rounded-[1.75rem] border border-line-dark bg-ink/6 p-6 2xl:p-8">
-              <p className="section-label text-clay">What it feels like</p>
-              <p className="mt-4 text-2xl font-semibold leading-snug tracking-tight">
+            <div className="hairline-panel hud-ticks rounded-2xl p-6 2xl:p-8">
+              <p className="mono-label text-cyan">What it feels like</p>
+              <p className="font-display mt-4 text-2xl font-semibold leading-snug tracking-tight">
                 You are the project manager for your own business instead of the
                 operator of it.
               </p>
@@ -162,8 +162,8 @@ export default function Problem() {
         <div className="mt-14 grid gap-5 lg:grid-cols-3 2xl:gap-6">
           {painCards.map((card, index) => (
             <Reveal key={card.title} delay={0.24 + index * 0.08}>
-              <article className="rounded-[1.5rem] border border-line-dark bg-ink/6 p-6 2xl:p-7">
-                <p className="text-lg font-semibold tracking-tight text-ink">
+              <article className="hairline-panel rounded-2xl p-6 2xl:p-7">
+                <p className="font-display text-lg font-semibold tracking-tight text-ink">
                   {card.title}
                 </p>
                 <p className="mt-3 leading-relaxed text-ink/68">{card.body}</p>

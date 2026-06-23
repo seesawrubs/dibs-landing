@@ -8,17 +8,20 @@ export default function Invitation() {
   return (
     <section className="bg-transparent py-20 sm:py-28">
       <Container>
-        <div className="panel-paper relative overflow-hidden rounded-[2rem] px-8 py-12 text-center sm:px-12 sm:py-16 lg:px-16">
+        <div className="hairline-panel hud-ticks scanlines relative overflow-hidden rounded-2xl border-gold/25 px-8 py-14 text-center shadow-[0_0_70px_rgba(202,230,22,0.08)] sm:px-12 sm:py-20 lg:px-16">
+          {/* Cinematic haze behind the closing call */}
+          <div aria-hidden="true" className="fog" />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full border border-line"
+            className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full border border-cyan/20"
           />
 
-          <Reveal>
-            <p className="section-label text-clay tracking-[0.3em]">Next step</p>
+          <Reveal className="relative z-10">
+            <p className="mono-label text-cyan">Next step</p>
 
-            <h2 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.015em] sm:text-5xl">
-              Ready to stop stitching tools together and start running one coherent system?
+            <h2 className="font-display mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.02em] sm:text-5xl">
+              Ready to stop stitching tools together and start running{" "}
+              <span className="text-gold bloom-lime">one coherent system</span>?
             </h2>
 
             <p className="mt-6 text-lg leading-relaxed text-ink-mute max-w-xl mx-auto">

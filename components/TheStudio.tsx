@@ -32,9 +32,10 @@ export default function TheStudio() {
       <Container className="py-20 sm:py-28">
         <div className="max-w-2xl">
           <Reveal>
-            <p className="section-label text-clay">The studio</p>
-            <h2 className="mt-5 text-4xl font-semibold tracking-[-0.015em] leading-none sm:text-6xl">
-              We don’t deliver projects.<br />We design complete operating layers.
+            <p className="mono-label text-cyan">The studio</p>
+            <h2 className="font-display mt-5 text-4xl font-semibold tracking-[-0.015em] leading-[1.02] sm:text-6xl">
+              We don’t deliver projects.<br />We design complete{" "}
+              <span className="text-gold bloom-lime">operating layers</span>.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
@@ -47,8 +48,11 @@ export default function TheStudio() {
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:mt-16">
           {principles.map((p, i) => (
             <Reveal key={i} delay={0.06 * i}>
-              <article className="panel-dark h-full rounded-[1.75rem] p-7 text-ink sm:p-8 2xl:p-9">
-                <h3 className="font-medium tracking-[-0.1px] text-ink text-[15px]">
+              <article className="hairline-panel hud-ticks group h-full rounded-2xl p-7 text-ink sm:p-8 2xl:p-9">
+                <span className="font-mono-tech text-[11px] tracking-[0.18em] text-cyan/60">
+                  {(i + 1).toString().padStart(2, "0")}
+                </span>
+                <h3 className="font-display mt-4 text-base font-medium tracking-[-0.1px] text-ink transition-colors group-hover:text-gold">
                   {p.title}
                 </h3>
                 <p className="mt-3 text-[13px] leading-relaxed text-ink-mute">

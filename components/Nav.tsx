@@ -56,10 +56,10 @@ export default function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <Container
         as="div"
-        className={`rounded-[1.6rem] border transition-all duration-300 ${
+        className={`rounded-2xl border transition-all duration-300 ${
           scrolled || menuOpen
-            ? "border-line bg-paper/88 shadow-[0_18px_55px_rgba(0,0,0,0.55)] backdrop-blur-xl"
-            : "border-transparent bg-paper/62 backdrop-blur-md"
+            ? "border-hairline bg-noir-2/88 shadow-[0_18px_55px_rgba(0,0,0,0.6)] backdrop-blur-xl"
+            : "border-transparent bg-noir-2/55 backdrop-blur-md"
         }`}
       >
         <nav className="flex min-h-[4.5rem] items-center justify-between px-5 sm:px-6">
@@ -78,25 +78,25 @@ export default function Nav() {
             }}
             className="flex items-center gap-3"
           >
-            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-gold text-[0.72rem] font-black tracking-[0.18em] text-paper shadow-[0_0_28px_rgba(202,230,22,0.45)]">
-              DBS
+            <span className="font-display grid h-10 w-10 place-items-center rounded-xl bg-gold text-[1.05rem] font-semibold text-paper shadow-[0_0_24px_rgba(202,230,22,0.4)]">
+              D
             </span>
             <div className="hidden md:block">
-              <p className="text-[0.9rem] font-bold tracking-tight text-ink">
-                Digital Business Studio
+              <p className="font-display text-[1.05rem] font-semibold tracking-[-0.01em] text-ink">
+                DIBS
               </p>
-              <p className="text-xs text-ink-mute">
-                Strategy, build, operations, and growth
+              <p className="mono-label mt-0.5 text-ink-mute">
+                Digital Business Studio
               </p>
             </div>
           </a>
 
-          <div className="hidden items-center gap-2 rounded-full border border-line bg-paper/80 p-1.5 lg:flex">
+          <div className="hidden items-center gap-1 rounded-full border border-hairline bg-noir/50 p-1.5 lg:flex">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
+                className="rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-noir-3 hover:text-cyan"
               >
                 {link.label}
               </a>
@@ -108,7 +108,7 @@ export default function Nav() {
               data-cal-namespace={CAL_STRATEGY.namespace}
               data-cal-link={CAL_STRATEGY.link}
               data-cal-config='{"layout":"month_view"}'
-              className="hidden rounded-full border border-line bg-paper/70 px-5 py-2.5 text-sm font-medium text-ink-soft transition-all hover:bg-gold hover:text-paper sm:block"
+              className="hidden rounded-full border border-hairline bg-noir/60 px-5 py-2.5 text-sm font-medium text-ink-soft transition-all hover:border-gold hover:bg-gold hover:text-paper sm:block"
             >
               Begin a conversation
             </button>
@@ -116,7 +116,7 @@ export default function Nav() {
               onClick={() => setMenuOpen((v) => !v)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              className="grid h-11 w-11 place-items-center rounded-full border border-line bg-paper/80 text-ink lg:hidden"
+              className="grid h-11 w-11 place-items-center rounded-full border border-hairline bg-noir/70 text-ink lg:hidden"
             >
               <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
                 {menuOpen ? (
@@ -146,7 +146,7 @@ export default function Nav() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
-              className="overflow-hidden border-t border-line lg:hidden"
+              className="overflow-hidden border-t border-hairline lg:hidden"
             >
               <div className="flex flex-col gap-1 px-5 pb-6 pt-2">
                 {links.map((link) => (
@@ -154,7 +154,7 @@ export default function Nav() {
                     key={link.href}
                     href={link.href}
                     onClick={handleMobileNavClick(link.href)}
-                    className="rounded-2xl px-4 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-paper-deep hover:text-ink"
+                    className="rounded-xl px-4 py-3 text-base font-medium text-ink-soft transition-colors hover:bg-noir-3 hover:text-cyan"
                   >
                     {link.label}
                   </a>
@@ -164,7 +164,7 @@ export default function Nav() {
                   data-cal-link={CAL_STRATEGY.link}
                   data-cal-config='{"layout":"month_view"}'
                   onClick={() => setMenuOpen(false)}
-                  className="mt-3 rounded-full border border-line bg-paper/70 px-5 py-3 text-sm font-medium text-ink"
+                  className="mt-3 rounded-full border border-hairline bg-gold px-5 py-3 text-sm font-semibold text-paper"
                 >
                   Begin a conversation
                 </button>

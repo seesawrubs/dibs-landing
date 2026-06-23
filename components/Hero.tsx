@@ -8,11 +8,11 @@ import Container from "./Container";
 const operatingLayers = [
   {
     title: "Business design",
-    body: "Offers, positioning, pricing, and funnels mapped before any code.",
+    body: "Offers, positioning, pricing, and funnels — mapped before any code.",
   },
   {
     title: "Product & platform",
-    body: "Custom web and mobile experiences built around how the business actually runs.",
+    body: "Custom web and mobile experiences built around how the business runs.",
   },
   {
     title: "Payments & operations",
@@ -20,7 +20,7 @@ const operatingLayers = [
   },
   {
     title: "Automation & growth",
-    body: "AI workflows that remove repetition and compound performance over time.",
+    body: "AI workflows that remove repetition and compound over time.",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function Hero() {
           if (conditions.reduce) {
             gsap.set([...intro, panelRef.current, headlineRef.current, ...rows], {
               autoAlpha: 1,
-              clearProps: "transform",
+              clearProps: "transform,filter",
             });
             return;
           }
@@ -86,13 +86,16 @@ export default function Hero() {
             gsap.set(headlineRef.current, { autoAlpha: 1 });
 
             tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+            // Cyber-noir reveal: lines rise AND resolve out of a blur, like
+            // neon coming into focus through haze.
             tl.from(split.lines, {
-              yPercent: 118,
-              duration: 1.1,
-              stagger: 0.12,
+              yPercent: 116,
+              filter: "blur(14px)",
+              duration: 1.2,
+              stagger: 0.13,
             })
-              .to(labelRef.current, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.15)
-              .to(subRef.current, { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.65")
+              .to(labelRef.current, { autoAlpha: 1, y: 0, duration: 0.7 }, 0.1)
+              .to(subRef.current, { autoAlpha: 1, y: 0, duration: 0.8 }, "-=0.7")
               .to(ctaRef.current, { autoAlpha: 1, y: 0, duration: 0.7 }, "-=0.55")
               .to(
                 panelRef.current,
@@ -101,7 +104,7 @@ export default function Hero() {
               )
               .from(
                 rows,
-                { autoAlpha: 0, y: 14, duration: 0.6, stagger: 0.09 },
+                { autoAlpha: 0, x: -10, duration: 0.55, stagger: 0.1 },
                 "-=0.55"
               );
           };
@@ -127,8 +130,8 @@ export default function Hero() {
             },
           });
           parallax
-            .to(glowRef.current, { yPercent: 24, ease: "none" }, 0)
-            .to(gridRef.current, { yPercent: 38, autoAlpha: 0.15, ease: "none" }, 0)
+            .to(glowRef.current, { yPercent: 22, ease: "none" }, 0)
+            .to(gridRef.current, { yPercent: 40, autoAlpha: 0.12, ease: "none" }, 0)
             .to(panelRef.current, { yPercent: -8, ease: "none" }, 0);
 
           return () => {
@@ -145,80 +148,102 @@ export default function Hero() {
     <section
       ref={root}
       id="top"
-      className="relative overflow-hidden pt-[6.5rem] sm:pt-[7.5rem]"
+      className="noir-base scanlines relative overflow-hidden pt-[6.5rem] sm:pt-[7.5rem]"
     >
-      {/* Atmospheric foundation — kept and made more cinematic */}
-      <div
-        ref={glowRef}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-14 h-[42rem] bg-[radial-gradient(circle_at_top,_rgba(202,230,22,0.13),_transparent_48%)]"
-      />
+      {/* Volumetric haze — neon blooms through atmosphere */}
+      <div ref={glowRef} aria-hidden="true" className="fog" />
+      <div aria-hidden="true" className="fog fog-2" />
+
+      {/* Faint technical grid, masked to fade at the edges */}
       <div
         ref={gridRef}
         aria-hidden="true"
-        className="ambient-grid pointer-events-none absolute inset-x-0 top-8 h-[40rem] opacity-50"
+        className="ambient-grid pointer-events-none absolute inset-x-0 top-8 h-[40rem] opacity-40"
       />
 
-      <Container className="pb-16 pt-10 sm:pb-24 sm:pt-14">
-        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center 2xl:gap-16">
-          {/* Left — confident, editorial headline */}
+      <Container className="relative pb-16 pt-10 sm:pb-24 sm:pt-16">
+        <div className="grid gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:items-center 2xl:gap-16">
+          {/* Left — short, loud, cinematic headline */}
           <div>
             <p
               ref={labelRef}
-              className="section-label text-clay tracking-[0.28em]"
+              className="mono-label flex items-center gap-3 text-cyan"
             >
-              A studio for complete digital businesses
+              <span className="pip" aria-hidden="true" />
+              DIBS — Digital Business Studio
             </p>
 
             <h1
               ref={headlineRef}
-              className="mt-5 max-w-[18ch] text-[3.1rem] font-semibold leading-[0.95] tracking-[-0.025em] text-ink sm:text-7xl lg:text-[5.75rem] 2xl:text-[6.1rem]"
+              className="font-display mt-6 max-w-[15ch] text-[3.4rem] font-semibold leading-[0.92] tracking-[-0.02em] text-ink sm:text-7xl lg:text-[5.4rem] 2xl:text-[5.9rem]"
             >
-              We design and run the operating systems behind exceptional digital businesses.
+              We build &amp; run the whole{" "}
+              <span
+                className="aberrate bloom-lime text-gold"
+                data-text="machine"
+              >
+                machine
+              </span>
+              .
             </h1>
 
             <p
               ref={subRef}
-              className="mt-6 max-w-[42ch] text-[15px] leading-relaxed text-ink-mute sm:text-lg"
+              className="mt-7 max-w-[44ch] text-[15px] leading-relaxed text-ink-soft/80 sm:text-lg"
             >
-              Strategy, product, payments, operations, and growth — composed as one coherent system rather than five separate vendors.
+              Strategy, product, payments, operations, and growth — composed as
+              one coherent system. Not five separate vendors.
             </p>
 
-            <div ref={ctaRef} className="mt-9">
+            <div ref={ctaRef} className="mt-9 flex flex-wrap items-center gap-5">
               <button
                 data-cal-namespace={CAL_STRATEGY.namespace}
                 data-cal-link={CAL_STRATEGY.link}
                 data-cal-config='{"layout":"month_view"}'
-                className="rounded-full bg-gold px-8 py-3.5 text-[13px] font-semibold tracking-[0.01em] text-paper shadow-[0_0_28px_rgba(202,230,22,0.32)] transition-all hover:bg-gold-bright hover:shadow-[0_0_42px_rgba(228,243,95,0.45)]"
+                className="group relative overflow-hidden rounded-full bg-gold px-8 py-3.5 text-[13px] font-semibold tracking-[0.01em] text-paper shadow-[0_0_28px_rgba(202,230,22,0.32)] transition-all hover:shadow-[0_0_46px_rgba(202,230,22,0.5)]"
               >
                 Begin a conversation
               </button>
 
               <a
                 href="#the-studio"
-                className="ml-5 inline-flex items-center gap-2 text-sm text-ink-soft transition-colors hover:text-ink"
+                className="font-mono-tech group inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-cyan"
               >
-                The studio
-                <span className="text-gold">→</span>
+                <span className="text-cyan">&#10095;</span>
+                <span className="border-b border-transparent pb-0.5 transition-colors group-hover:border-cyan/50">
+                  the studio
+                </span>
               </a>
             </div>
           </div>
 
-          {/* Right — quiet, elegant operating layers in a card treatment */}
+          {/* Right — operating layers as a hairline HUD readout */}
           <div ref={panelRef}>
-            <div className="panel-dark rounded-[1.75rem] border border-line-dark p-8 text-ink/90 lg:p-9">
-              <p className="section-label text-clay">What we compose as one</p>
+            <div className="hairline-panel hud-ticks relative rounded-2xl p-7 lg:p-8">
+              <div className="flex items-center justify-between">
+                <p className="mono-label text-ink-mute">Operating layers</p>
+                <p className="mono-label flex items-center gap-2 text-cyan/80">
+                  <span className="pip" aria-hidden="true" />
+                  online
+                </p>
+              </div>
 
-              <div className="mt-6 space-y-6">
+              <div className="mt-7 space-y-0">
                 {operatingLayers.map((layer, index) => (
-                  <div key={index} data-row className="group">
-                    <div className="flex items-baseline gap-3">
-                      <span className="text-gold/90 text-sm tabular-nums tracking-[3px]">{(index + 1).toString().padStart(2, "0")}</span>
-                      <p className="text-[15px] font-medium tracking-[-0.1px] text-ink group-hover:text-gold transition-colors">
+                  <div
+                    key={index}
+                    data-row
+                    className="group border-t border-hairline/60 py-4 first:border-t-0 first:pt-0"
+                  >
+                    <div className="flex items-baseline gap-4">
+                      <span className="font-mono-tech text-[11px] tabular-nums tracking-[0.15em] text-cyan/70">
+                        {(index + 1).toString().padStart(2, "0")}
+                      </span>
+                      <p className="text-[15px] font-medium tracking-[-0.1px] text-ink transition-colors group-hover:text-gold">
                         {layer.title}
                       </p>
                     </div>
-                    <p className="mt-1.5 pl-[2.35rem] text-[13px] leading-snug text-ink-mute">
+                    <p className="mt-1.5 pl-[1.9rem] text-[12.5px] leading-snug text-ink-mute">
                       {layer.body}
                     </p>
                   </div>
@@ -228,9 +253,13 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Very light, confident closer — removed the old "modes" and friction chips for air */}
-        <div className="mt-16 border-t border-line pt-6 text-xs text-ink-mute/70 2xl:mt-20">
-          One studio. Complete accountability. Built to run.
+        {/* Quiet mono closer */}
+        <div className="font-mono-tech mt-16 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-hairline pt-6 text-[10px] uppercase tracking-[0.22em] text-ink-mute/70 2xl:mt-20">
+          <span>One studio</span>
+          <span className="text-cyan/50">/</span>
+          <span>Complete accountability</span>
+          <span className="text-cyan/50">/</span>
+          <span>Built to run</span>
         </div>
       </Container>
     </section>

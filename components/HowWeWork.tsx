@@ -122,7 +122,7 @@ export default function HowWeWork() {
   return (
     <section
       id="approach"
-      className="relative overflow-hidden bg-paper-deep/60 text-ink"
+      className="relative overflow-hidden bg-noir-2/50 text-ink"
     >
       <div
         aria-hidden="true"
@@ -135,8 +135,8 @@ export default function HowWeWork() {
       >
         <Container className="pt-12 sm:pt-16 lg:pt-2 lg:pb-0">
           <Reveal>
-            <p className="section-label text-clay">How we work</p>
-            <h2 className="mt-2 max-w-[16ch] text-4xl font-semibold tracking-[-0.015em] leading-[0.98] sm:text-5xl lg:text-6xl">
+            <p className="mono-label text-cyan">How we work</p>
+            <h2 className="font-display mt-2 max-w-[16ch] text-4xl font-semibold tracking-[-0.015em] leading-[1.0] sm:text-5xl lg:text-6xl">
               Clear steps. No mystery handoffs.
             </h2>
             <p className="mt-3 max-w-[44ch] text-[14px] leading-relaxed text-ink-mute">
@@ -147,7 +147,7 @@ export default function HowWeWork() {
           </Reveal>
 
           {/* Progress rail (desktop horizontal scrub) */}
-          <div className="mt-3 hidden h-px w-40 overflow-hidden rounded-full bg-line lg:block">
+          <div className="mt-3 hidden h-px w-40 overflow-hidden rounded-full bg-hairline lg:block">
             <div
               ref={progressRef}
               className="h-full w-full origin-left bg-gold shadow-[0_0_12px_rgba(202,230,22,0.7)]"
@@ -166,12 +166,12 @@ export default function HowWeWork() {
               <article
                 key={step.n}
                 data-step
-                className="panel-dark relative rounded-[1.75rem] border border-line-dark p-5 sm:p-6 lg:flex lg:w-[18rem] lg:shrink-0 lg:flex-col lg:p-5"
+                className="hairline-panel hud-ticks group relative rounded-2xl p-5 sm:p-6 lg:flex lg:w-[18rem] lg:shrink-0 lg:flex-col lg:p-5"
               >
-                <span className="font-mono text-sm tracking-[4px] text-gold/80">
+                <span className="font-mono-tech text-sm tracking-[0.2em] text-cyan/70">
                   {step.n}
                 </span>
-                <h3 className="mt-4 text-[17px] font-medium tracking-[-0.1px] text-ink lg:text-xl">
+                <h3 className="font-display mt-4 text-[17px] font-medium tracking-[-0.1px] text-ink transition-colors group-hover:text-gold lg:text-xl">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-[13px] leading-relaxed text-ink-mute lg:mt-4 lg:text-sm">
@@ -185,7 +185,7 @@ export default function HowWeWork() {
 
       {/* Note on flexibility (after the explicit engagement options above) */}
       <Container className="pb-6 sm:pb-10">
-        <div className="rounded-[1.5rem] border border-line bg-paper/60 p-8 text-[13px] leading-relaxed text-ink-mute">
+        <div className="hairline-panel rounded-2xl p-8 text-[13px] leading-relaxed text-ink-mute">
           The shape of an engagement is never forced. It might be a full launch
           partnership, an ongoing operator relationship, or focused work on one
           layer. The right form always emerges from the first conversation.

@@ -36,17 +36,17 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   const [openItem, setOpenItem] = useState(false);
 
   return (
-    <div className="border-b border-line last:border-b-0">
+    <div className="border-b border-hairline last:border-b-0">
       <button
         onClick={() => setOpenItem((value) => !value)}
         aria-expanded={openItem}
-        className="flex w-full items-center justify-between gap-6 py-6 text-left"
+        className="group flex w-full items-center justify-between gap-6 py-6 text-left"
       >
-        <span className="text-lg font-semibold tracking-tight text-ink">{q}</span>
+        <span className="font-display text-lg font-medium tracking-tight text-ink transition-colors group-hover:text-cyan">{q}</span>
         <motion.span
           animate={{ rotate: openItem ? 45 : 0 }}
           transition={{ duration: 0.25 }}
-          className="shrink-0 text-gold"
+          className="shrink-0 text-cyan"
           aria-hidden="true"
         >
           <svg width="18" height="18" viewBox="0 0 18 18">
@@ -83,10 +83,10 @@ export default function Faq() {
         <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] 2xl:gap-16">
           <div>
             <Reveal>
-              <p className="section-label text-gold">FAQ</p>
-              <h2 className="mt-6 text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
+              <p className="mono-label text-cyan">FAQ</p>
+              <h2 className="font-display mt-6 text-3xl font-semibold leading-[1.05] tracking-[-0.01em] text-ink sm:text-5xl">
                 Questions,{" "}
-                <span className="serif-accent font-normal text-gold">
+                <span className="text-gold bloom-lime">
                   answered plainly
                 </span>
                 .
@@ -99,7 +99,7 @@ export default function Faq() {
           </div>
 
           <Reveal delay={0.08}>
-            <div className="rounded-[2rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(202,230,22,0.06)] sm:p-8">
+            <div className="hairline-panel hud-ticks rounded-2xl p-6 sm:p-8">
               {faqs.map((faq) => (
                 <FaqItem key={faq.q} q={faq.q} a={faq.a} />
               ))}

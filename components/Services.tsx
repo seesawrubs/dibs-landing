@@ -71,7 +71,7 @@ function BookingButton({
       className={`rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
         dark
           ? "bg-gold text-paper shadow-[0_0_28px_rgba(202,230,22,0.35)] hover:bg-gold-bright"
-          : "border border-line bg-paper/75 text-ink hover:bg-paper-deep"
+          : "border border-hairline bg-noir/50 text-ink hover:border-cyan hover:text-cyan"
       }`}
     >
       {children}
@@ -84,14 +84,14 @@ export default function Services() {
   const secondary = offerings.filter((offering) => !offering.featured);
 
   return (
-    <section id="engage" className="bg-paper-deep/70">
+    <section id="engage" className="bg-noir-2/60">
       <Container className="py-20 sm:py-28">
         <Reveal>
-          <p className="section-label text-gold">Engagements</p>
+          <p className="mono-label text-cyan">Engagements</p>
           <div className="mt-6 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <h2 className="max-w-3xl text-3xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
+            <h2 className="font-display max-w-3xl text-3xl font-semibold leading-[1.05] tracking-[-0.01em] text-ink sm:text-5xl">
               Choose the level of ownership you want us to{" "}
-              <span className="serif-accent font-normal text-gold">take on</span>
+              <span className="text-gold bloom-lime">take on</span>
               .
             </h2>
             <p className="max-w-xl text-lg leading-relaxed text-ink-mute">
@@ -103,9 +103,9 @@ export default function Services() {
 
         <div className="mt-16 grid gap-6 lg:grid-cols-12 2xl:gap-8">
           <Reveal delay={0.08} className="lg:col-span-7 2xl:col-span-8">
-            <article className="panel-dark h-full rounded-[2rem] p-7 text-ink sm:p-9">
-              <p className="section-label text-clay">{featured.tag}</p>
-              <h3 className="mt-5 max-w-xl text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+            <article className="hairline-panel hud-ticks h-full rounded-2xl border-gold/25 p-7 text-ink shadow-[0_0_60px_rgba(202,230,22,0.07)] sm:p-9">
+              <p className="mono-label text-gold">{featured.tag}</p>
+              <h3 className="font-display mt-5 max-w-xl text-3xl font-semibold leading-tight tracking-[-0.01em] sm:text-4xl">
                 {featured.name}
               </h3>
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/74">
@@ -116,7 +116,7 @@ export default function Services() {
                 {featured.points.map((point) => (
                   <div
                     key={point}
-                    className="rounded-[1.35rem] border border-line-dark bg-ink/7 p-4"
+                    className="rounded-xl border border-hairline bg-noir/40 p-4"
                   >
                     <p className="text-sm font-medium leading-relaxed text-ink/84">
                       {point}
@@ -125,8 +125,8 @@ export default function Services() {
                 ))}
               </div>
 
-              <div className="mt-8 rounded-[1.5rem] border border-line-dark bg-ink/7 p-5">
-                <p className="section-label text-clay">Best fit</p>
+              <div className="mt-8 rounded-xl border border-hairline bg-noir/40 p-5">
+                <p className="mono-label text-cyan">Best fit</p>
                 <p className="mt-3 leading-relaxed text-ink/72">
                   {featured.fit}
                 </p>
@@ -147,9 +147,9 @@ export default function Services() {
           <div className="grid gap-6 lg:col-span-5 2xl:col-span-4">
             {secondary.map((offering, index) => (
               <Reveal key={offering.name} delay={0.14 + index * 0.08}>
-                <article className="h-full rounded-[1.85rem] border border-line bg-paper p-6 shadow-[0_18px_50px_rgba(202,230,22,0.06)] sm:p-7">
-                  <p className="section-label text-gold">{offering.tag}</p>
-                  <h3 className="mt-4 text-2xl font-bold leading-snug tracking-tight text-ink">
+                <article className="hairline-panel h-full rounded-2xl p-6 sm:p-7">
+                  <p className="mono-label text-cyan">{offering.tag}</p>
+                  <h3 className="font-display mt-4 text-2xl font-semibold leading-snug tracking-[-0.01em] text-ink">
                     {offering.name}
                   </h3>
                   <p className="mt-4 leading-relaxed text-ink-mute">
@@ -159,7 +159,7 @@ export default function Services() {
                   <ul className="mt-6 space-y-3">
                     {offering.points.map((point) => (
                       <li key={point} className="flex gap-3 text-sm text-ink-soft">
-                        <span className="text-gold" aria-hidden="true">
+                        <span className="text-cyan" aria-hidden="true">
                           +
                         </span>
                         <span>{point}</span>
@@ -167,7 +167,7 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  <p className="mt-6 border-t border-line pt-5 text-sm leading-relaxed text-ink-mute">
+                  <p className="mt-6 border-t border-hairline pt-5 text-sm leading-relaxed text-ink-mute">
                     {offering.fit}
                   </p>
 
